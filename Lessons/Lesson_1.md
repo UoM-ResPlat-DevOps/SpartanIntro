@@ -169,12 +169,14 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: Copying and Transferring Files on Local Systems
-* To get a copy of the files from an external source to your home directory, you will probably want to use `wget` or `git`. 
+* To get a copy of the files from an external source to your home directory, you will probably want to use `wget` or `git`. (e.g., `wget https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Resources/gattaca.txt`)
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
 | `wget URL`      | Non-interactive download of files over http, https, ftp etc.         |
 | `git clone URL` | Clone a repository into a new directory.                                        |
+
+
 -- *Slide End* --
 
 -- *Slide* --
@@ -199,11 +201,11 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 
 ### Part 2: Synchronising Files and Directories I
-* The `rsync` utility provides a way to keep two collections of files "in sync". The nice feature of rsync is that it is very fast - after the initial run - and versatile. The reason for its speed is that it tracks changes. The source or destination address should also require a remote shell login. For example; `rsync -avz testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:`
+* The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes. The source or destination address should also require a remote shell login. For example; `rsync -avz testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:`
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
-| `rsync source destination`| General rsync command; however there are numerous options  |
+| `rsync source destination`| General rsync command  |
 | `rsync -avze ssh username@remotemachine:/path/to/source .` | With ssh encryption |
 -- *Slide End* --
 -- *Slide* --
@@ -211,7 +213,12 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 ### Part 2: Synchronising Files and Directories II
 * The `rsync -avz` command ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. 
 * Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".
-* Rsync can be used in a synchronise mode with the --delete flag. 
+
+-- *Slide End* --
+-- *Slide* --
+
+### Part 2: Synchronising Files and Directories III
+* Rsync can be used in a synchronise mode with the --delete flag.  Consider this with the `-n`, or `--dry-run` options first!
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
@@ -250,14 +257,9 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part 2: Why The File Differences Mattered
 <blockquote>
-BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers.
-
-In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. Fortunately, because of high performance computing, massive databases, and molecular modelling applications, science has begun to develop specific inhibitors of mutated B-raf protein for anticancer treatments.
+BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers. In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. 
 </blockquote>
 -- *Slide End* --
-
-
-
 
 -- *Slide* --
 ### Part 3: Environment Modules 
@@ -265,11 +267,10 @@ In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSR
 * Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
 * The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
-
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Module Commands
+### Part 3: Module Commands I
 
 | Command                         | Explanation                                            |
 |---------------------------------|:------------------------------------------------------:|
@@ -281,86 +282,77 @@ In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSR
 | `module list`                 | lists all the modules currently loaded.                |
 
 
-* There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
-* On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for modules not available for the user to load.
-
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Batch Job Submissions
+### Part 3: Module Commands II
+* There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
+* On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for modules not available for the user to load.
+-- *Slide End* --
 
+-- *Slide* --
+### Part 3: Portable Batch System
 * The Portable Batch System (or simply PBS) is a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources.
-* Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. In 1998 the original version of PBS was released as an open-source product as OpenPBS. This was forked by Adaptive Computing (formally, Cluster Resources) who developed TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team and what commercial property of exists from the original product is now part of Altair Engineering who have their own version, PBSPro. TORQUE is used on the Edward HPC system.
-* Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
+* Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro. TORQUE is used on the Edward HPC system.
+-- *Slide End* --
 
+-- *Slide* --
+### Part 3: SLURM
+* Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 3: Job Submission Principles
-
 * The steps for job submission are (a) setup and launch., (b) monitor., and (c) retrieve results and analyse. Jobs are launched from the login node with resource requests and, when the job scheduler decides, run on compute nodes. Some directories (e.g.,. user home or project directories) are shared across the entire cluster so output is an accessible place.
 * A cluster is a shared environment thus a a resource requesting system. Policies ensure that everyone has a "fair share" to the resources (e.g., user processor limits).
-* Users must not run jobs on the login node! The login node is a **particularly** shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make operations difficult for everyone.
+-- *Slide End* --
 
+-- *Slide* --
+### Part 3: DON'T RUN JOBS ON THE LOGIN NODE!
+* The login node is a **particularly** shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make operations difficult for everyone.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 3: Graphic from IBM 'Red Book' on Job Submission
-
-<img src="http://levlafayette.com/files/rabbitjobs.png" title="Job submission using rabbits" />
-
-
+<img src="http://levlafayette.com/files/rabbitjobs.png" width="100%" height="100%" title="Job submission using rabbits" />
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Job Setup
-
+### Part 3: Job Setup I
 * Setup and launch consists of writing a short script that initially makes resource requests 
 (walltime, processors, memory, queues) and then commands (loading modules, changing 
 directories, running executables against datasets etc), and optionally checking queueing system.
-* Core command for checking queue in TORQUE: showq
-* Core command for checking queue in SLURM:   squeue
-* Core command for job submission in TORQUE:  qsub [jobscript]
-* Core command for job submission in SLURM:   sbatch [jobscript]
+* Core command for checking queue `showq` (TORQUE), `squeue` (SLURM)
+* Core command for job submission `qsub [jobscript]` (TORQUE), `sbatch [jobscript]` (SLURM)
+-- *Slide End* --
+
+-- *Slide* --
+### Part 3: Job Setup II
 * TORQUE jobs must include `cd $PBS_O_WORKDIR` to change to the directory where they were launched. SLURM jobs do not require this. 
 * TORQUE jobs do not parse the user's environment to the compute node by default; the `#$PBS -V` command is required. SLURM does this by default.
-
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 3: Status and Output
-
-* Core command for checking job in TORQUE:qstat [jobid]
-* Core command for checking job in Moab:      checkjob [jobid] 
-* Core command for checking job in Slurm:      squeue -j [jobid]
-* Detailed command in Slurm:                           scontrol show job [jobid] 
-* Core command for deleting job in TORQUE:  qdel [jobid]
-* Core command for deleting job in Slurm:        scancel [jobid]
+* Core command for checking job `qstat [jobid]` (TORQUE), `checkjob [jobid]` (Moab), `squeue -j [jobid]` (SLURM), detailed command `scontrol show job [jobid]` (SLURM) 
+* Core command for deleting job `qdel [jobid]` (TORQUE), `scancel [jobid]` (SLURM)
 * Both TORQUE and Slurm provide error and output files (combined into one by default in 
 SLURM). They may also have files for post-job processing. Graphic visualisation is best done on 
 the desktop.
-
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 4: Single Core Job on Edward and Spartan
 
-`#!/bin/bash`
-`#PBS ­q compute`
-`#PBS ­l walltime=01:00:00`
-`#PBS ­l nodes=1:ppn=1`
-`cd $PBS_O_WORKDIR`
-`module load my­app­compiler/version`
-`my­app data`
-
-`#!/bin/bash`
-`#SBATCH ­p cloud`
-`#SBATCH ­­time=01:00:00`
-`#SBATCH ­­nodes=1`
-`#SBATCH ­­ntasks=1`
-`module load my­app­compiler/version`
-`my­app data`
-
+| TORQUE (Edward)                     | SLURM (Spartan)                                       | 
+|-------------------------------------|------------------------------------------------------:|
+|`#!/bin/bash`                        | `#!/bin/bash`                                         |
+|`#PBS ­-q compute`                    | `#SBATCH -­p cloud`                                    |
+|`#PBS ­-l walltime=01:00:00`          | `#SBATCH ­­time=01:00:00`                               |
+|`#PBS ­-l nodes=1:ppn=1`              | `#SBATCH ­­nodes=1`                                     |
+|`cd $PBS_O_WORKDIR`                  | `#SBATCH ­­ntasks=1`                                    |
+|`module load my­app­compiler/version`  | `module load my­app­compiler/version`                   |
+|`my­app data`                         | `my­app data`                                          |
 -- *Slide End* --
 
 -- *Slide* --
@@ -368,13 +360,16 @@ the desktop.
 
 * Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
 same script as previously provided but change the resource request as follows:
-`#PBS ­l nodes=2:ppn=2`
+`#PBS ­-l nodes=2:ppn=2`
 * For example shared-memory multithreaded jobs on SLURM/Spartan (e.g., OpenMP), modify the 
 --cpus-per-task to a maximum of 16, which is the maximum number of cores on a single instance.
 `#SBATCH ­­cpus­per­task=16`
+-- *Slide End* --
+
+-- *Slide* --
+### Part 4 : Multinode Jobs Spartan
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
-
 `#!/bin/bash`
 `#SBATCH -­p cloud`
 `#SBATCH ­­nodes=2`
@@ -383,76 +378,75 @@ invoked and the resource requests altered e.g.,
 `module load my­app­compiler/version`
 `srun my­mpi­app`
 
-* Multinode jobs on Spartan may be slower if they have a lot of interprocess 
-communication and they cross compute nodes.
-
+* Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
 -- *Slide End* --
 
 -- *Slide* --
-
-### Part 4 : Job/Batch Arrays and Dependencies
-
+### Part 4 : Job/Batch Arrays
 * With a job or batch array the same batch script, and therefore the same resource requests, is used multiple  times. A typical example is to apply the same task across multiple datasets. The following example submits 10 batch jobs with myapp running against datasets dataset1.csv, dataset2.csv, ... 
 dataset10.csv
 
-`#PBS ­t 1­10`
-`myapp ${PBS_ARRAYID}.csv`
+`#PBS ­-t 1­10`<br />
+`myapp ${PBS_ARRAYID}.csv`<br />
 
-`#SBATCH ­­array=1­-10`
+`#SBATCH ­­array=1­-10`<br />
 `myapp ${SLURM_ARRAY_TASK_ID}.csv`
+-- *Slide End* --
 
-* A dependency condition is established on which the launching of a batch script 
-depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, 
-`afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job.
+-- *Slide* --
+### Part 4 : Job/Batch Dependencies
+* A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job.
 
-`#PBS ­W x=depend:afterok:myfirstjob`
+`#PBS ­-W x=depend:afterok:myfirstjob`<br />
 `#SBATCH ­­dependency=afterok:myfirstjobid mysecondjob`
+-- *Slide End* --
 
+-- *Slide* --
 ### Part 4: Interactive Jobs
+* In TORQUE or SLURM, based on the resource requests made on the command  line, puts the user on to a compute node. This is typically done if they user wants to run a  large script (and shouldn't do it on the login node), or wants to test or debug a job. The  following command would launch one node with two processors for ten minutes.
 
-* In the third case TORQUE or SLURM, based on the resource requests made on the command 
-line, puts the user on to a compute node. This is typically done if they user wants to run a 
-large script (and shouldn't do it on the login node), or wants to test or debug a job. The 
-following command would launch one node with two processors for ten minutes.
-
-`[lev@edward ~]$ qsub ­l nodes=1:ppn=2,walltime=0:10:0 ­I`
-`qsub: waiting for job 2132478.edward­m to start`
-`qsub: job 2132478.edward-­m ready`
-`[lev@edward042 ~]$ `
-
+`[lev@edward ~]$ qsub -­l nodes=1:ppn=2,walltime=0:10:0 ­I`<br />
 `[llafayette@unimelb.edu.au@spartan interact]$ sinteractive ­­nodes=1 ­­ntasks­per­node=2 ­­time=0:10:0`
-`srun: job 164 queued and waiting for resources`
-`srun: job 164 has been allocated resources`
-`[llafayette@unimelb.edu.au@spartan001 interact]$`
+-- *Slide End* --
 
-### Part 5: Command Summaries for Edward and Spartan
+-- *Slide* --
+### Part 5: User Commands PBS/Torque SLURM
 
-User Commands PBS/Torque SLURM
-Job submission qsub [script_file] sbatch [script_file]
-Job submission qdel [job_id] scancel [job_id]
-Job status (by job) qstat [job_id] squeue [job_id]
-Job status (by user) qstat -u [user_name] squeue -u [user_name]
-Node list pbsnodes -a sinfo -N
-Queue list qstat -Q squeue
-Cluster status showq, qstatus -a squeue -p [partition]
-Environment 
-Job ID $PBS_JOBID $SLURM_JOBID
-Submit Directory $PBS_O_WORKDIR $SLURM_SUBMIT_DIR
-Submit Host $PBS_O_HOST $SLURM_SUBMIT_HOST
-Node List $PBS_NODEFILE $SLURM_JOB_NODELIST
-Job Array Index $PBS_ARRAYID $SLURM_ARRAY_TASK_ID
+| User Commad    | TORQUE (Edward)       | SLURM (Spartan)         | 
+|----------------|-----------------------|------------------------:|
+|Job submission  |qsub [script_file]     |sbatch [script_file]     |
+|Job delete      |qdel [job_id]          |scancel [job_id]         |
+|Job status      |qstat [job_id]         |squeue [job_id]          |
+|Job status      |qstat -u [user_name]   |squeue -u [user_name]    |
+|Node list       |pbsnodes -a            |sinfo -N                 |
+|Queue list      |qstat -Q               |squeue                   |
+|Cluster status  |showq                  |qstatus -a               |
+-- *Slide End* --
 
-Job Specification PBS SLURM
-Script directive #PBS #SBATCH
-Queue -q [queue] -p [queue]
-Job Name -N [name] --job-name=[name]
-Nodes -l nodes=[count] -N [min[-max]]
-CPU Count -l ppn=[count] -n [count]
-Wall Clock Limit -l walltime=[hh:mm:ss] -t [days-hh:mm:ss]
-Event Address -M [address] --mail-user=[address]
-Event Notification -m abe --mail-type=[events]
-Memory Size -l mem=[MB] --mem=[mem][M|G|T]
-Proc Memory Size -l pmem=[MB] --mem-per-cpu=[mem][M|G|T]
+-- *Slide* --
+### Part 5: Job Commands PBS/Torque SLURM
+| Job Specification     | TORQUE (Edward)        | SLURM (Spartan)            | 
+|-----------------------|------------------------|---------------------------:|
+|Script directive       |`#PBS`                  |`#SBATCH`                   |
+|Queue                  |`-q [queue]`            |`-p [queue]`                |
+|Job Name               |`-N [name]`             |`--job-name=[name]`         |
+|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]`            |
+|CPU Count              |`-l ppn=[count]`        |`-n [count]`                |
+|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]`        |
+|Event Address          |`-M [address]`          |`--mail-user=[address]`     |
+|Event Notification     |`-m abe`                |`--mail-type=[events]`      |
+|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`        |
+|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`|
+-- *Slide End* --
 
-
+-- *Slide* --
+### Part 5: Environment Commands PBS/Torque SLURM
+| Environment Command   | TORQUE (Edward)       | SLURM (Spartan)         | 
+|-----------------------|-----------------------|------------------------:|
+|Job ID                 |`$PBS_JOBID`           |`$SLURM_JOBID`           |
+|Submit Directory       |`$PBS_O_WORKDIR`       |`$SLURM_SUBMIT_DIR`      |
+|Submit Host            |`$PBS_O_HOST`          |`$SLURM_SUBMIT_HOST`     |
+|Node List              |`$PBS_NODEFILE`        |`$SLURM_JOB_NODELIST`    |
+|Job Array Index        |`$PBS_ARRAYID`         |`$SLURM_ARRAY_TASK_ID`   |
+-- *Slide End* --
 
