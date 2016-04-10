@@ -299,6 +299,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: SLURM
 * Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
+* There is a repository for converting PBS to SLURM: https://github.com/bjpop/pbs2slurm
 -- *Slide End* --
 
 -- *Slide* --
@@ -449,4 +450,6 @@ dataset10.csv
 |Node List              |`$PBS_NODEFILE`        |`$SLURM_JOB_NODELIST`    |
 |Job Array Index        |`$PBS_ARRAYID`         |`$SLURM_ARRAY_TASK_ID`   |
 -- *Slide End* --
-
+-- *Slide* --
+<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/genericcluster.png" />
+-- *Slide End* --
