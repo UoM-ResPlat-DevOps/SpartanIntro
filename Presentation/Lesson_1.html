@@ -1,12 +1,57 @@
--- *Slide* --
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Spartan HPC Lessons</title>
+
+    <meta name="description" content="Slides for the introductory course on the Spartan HPC system.">
+    <meta name="author" content="Lev Lafayette"">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+<!-- to give this presentation list items numbered A, B, C etc.. for use in questions -->
+<style type="text/css">.reveal ol {list-style-type: upper-alpha;}</style>
+<!-- Slides go here -->
+<section data-markdown><script type="text/template">
 ### Welcome to the Introduction to Spartan HPC Course
 * Lev Lafayette has worked as an HPC sysadmin for since 2007, first at the Victorian Partnership for Advanced Computing, now at the University of Melbourne. Has worked in IT since 1999.
 * Has taught approximately 150 day-long classes at 17 different research institutions across Australia since 2012.
 * Collects degrees for fun. Profit is accidential. Doesn't actually have a computer ccience degree - but does have a postgraduate degee in Adult and Tertiary Education.
 * Stalk me at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Goals for today
 * Part 1: Learning about supercomputers and Spartan.
 * Part 2: Logging on an exploring the Linux Environment.
@@ -15,66 +60,57 @@
 * Part 5: TORQUE/Moab and SLURM Command Summaries
 * Some live notes for the day will be on https://etherpad.openstack.org/p/SpartanIntro
 * A copy of the slides and same code is available at: https://github.com/UoM-ResPlat-DevOps/SpartanIntro
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: About Supercomputers and High Performance Computers
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
 * One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge is a broader, more interesting metric.
 * High Performance Computer (HPC) is any computer system whose architecture allows for above average performance.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: Cluster Computing and Scientific Computing
 * Clustered computing is when two or more computers serve a single resource. This improves 
 performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
 * Scientific (or research) computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever scientists use and do.
 * Note issues such as reproducibility, access to datasets and environments etc.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: Parallel Computing and Parallel Programming
 * Cluster computing with data parallelism: The horse and cart example.
 * With a cluster architecture, applications can be more easily parallelised across them. Parallel computing refers to the submission of jobs or processes over multiple processors and by splitting up the data or tasks between them.
 * Further examples of serial versus parallel; random number generation, driving a car. 
 * Some applications have included weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies. Reality is a parallel system!
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: Generic HPC Cluster Design
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/genericcluster.png" />
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: King Edward is Being Retired
 * Since 2011 UniMelb's general cluster has been Edward (previous system was Alfred).
 * A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011.
 * Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: What's Different About Spartan?
 * New system is Spartan (not  (not Æthelstan or Ælfweard)
 * University desired a 'more unified experience to access compute services'. 
 * Recommended solution is to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
 * Matches Sparta's citenzship structure; the few Spartiate citizens are bare metal HPC, the more numerous Perioeci free inhabitants are vHPC nodes, and the many Helot slaves are elastic compute nodes.
 * Spartan is not "HPC in the Cloud", it's a chimera.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 1: Spartan HPC/Cloud Hybrid Design
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/spartanlayout.png" />
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part I: Logging in and Help
 * To log on to a HPC system, you will need a user account and password and a Secure Shell (ssh) client. Linux distributions almost always include SSH as part of the default installation as does 
 Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http://putty.org). 
 * To transfer files use scp, WinSCP, Filezilla (https://filezilla-project.org/), or rsync.
 * Logins to Spartan are based on University Active Directory credentials.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part I: Logging in and Help II
 * If a user has problems with submitting a job, needs a new application or extension to an existing application installed, if their submissions are generated unexpected errors etc., an email can be sent to: hpc­-support@unimelb.edu.au
 * Example general logins:
@@ -84,23 +120,20 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * Example specific login.
 `ssh llafayette@spartan.hpc.unimelb.edu.au`
 * An ~/.ssh/config file on your device will make all this easier!
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: This is a GNU/Linux CLI World 
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/gnulinux.png" align="center" height="25%" width="25%" vspace="5" hspace="5" />
 * In November 2015 of the Top 500 Supercomputers worldwide, every single machine used a  "UNIX­like" operating system; 98.8% used Linux, 1.2% used AIX.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: This is a GNU/Linux World CLI II
 * The command­line interface provides a great deal more power and is very resource efficient. 
 * GNU/Linux scales and does so with stability and efficiency.
 * Critical software such as the Message Parsing Interface (MPI) and nearly all scientific programs are designed to work with GNU/Linux. 
 * The operating system and many applications are provided as "free and open source" whiich are better placed to improve, optimize and maintain.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Exploring The Environment
 * When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). 
 * "Everything in the UNIX system is a file"; which means that files, directories, and any input-output resources (disks, keyboard, memory, etc) are treated as a stream of bytes through the filesystem.
@@ -110,9 +143,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |`whoami`   | "Who Am I?; prints the effective user id.                                  |
 |`pwd`      | "Print working directory";  prints the directory where you're currently in.|
 |`ls`       | "List" directory listing                                                   |	
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Command Options
 * Linux commands often come with options expressed as:
 `<command> --<option[s]>`
@@ -120,9 +152,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
 |`ls -lart` | Directory listing with options (long, all, reverse time)                   |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: The Online Manual
 * Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. A more verbose alternative to man with a simple hypertext system is info. 
 
@@ -132,9 +163,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |`apropos <command>`  | Search for a particular command. Equivalent to "man -k <command>"|
 |`info <command>`     | A verbose description of the command                             |
 
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Pipes
 * Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol.
 
@@ -142,9 +172,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |--------------------|:-------------------------------------------------------------------:|
 | <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle.        |
 | <code>ps afux &#124; less</code> | "ps" provides a list of current processes.                          |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Redirects
 * To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. 
 
@@ -152,22 +181,19 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |-------------------|:--------------------------------------------------------------------:|
 | `w > list.txt`  | 'w' is a combination of who, uptime and ps -a, redirected            |
 | `w >> list.txt` | Same command, concatenated                                           |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Files and Text Editing I
 * Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is better to use underscores or CamelCase instead of spaces.
 * Linux is case-sensitive with its filenames (e.g., list.txt, LIST.txt lisT.txT are different).
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Files and Text Editing II
 * Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). 
 * The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file.
 * There are three text editors usually available on Linux systems on the command-line. The first is `nano`; easy to use, limited functionality. The others (both from 1976) are `vi` (or `vim`), which is terse but powerful, or `emacs` (Editor Macros) editor and environment is a feature-rich application,
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Copying and Transferring Files on Local Systems
 * To get a copy of the files from an external source to your home directory, you will probably want to use `wget` or `git`. (e.g., `wget https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Resources/gattaca.txt`)
 
@@ -177,9 +203,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | `git clone URL` | Clone a repository into a new directory.                                        |
 
 
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 * To copy a file from within a system use the `cp` command. Common options include `-r` to copy and entire directory
  
 | Command           | Explanation                                                          |
@@ -187,9 +212,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | `cp source destination`      | Copy a file from source to destination         |
 | `cp -r source destination` | Recursive copy (e.g., a directory) from source to destination                                        |
 | `cp -a source destination` | Recursive copy as archive (with permissions, links)                                        |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Copying and Transferring Files Between Systems
 * To copy files to between systems desktop use SCP (secure copy protocol) or SFTP (secure file transfer protocol), combining the ssh and cp functionality. The `cp` options can also be used. The source or destination address should also require a remote shell login. For example; `scp -r testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:` Note the colon at the end!
 
@@ -197,8 +221,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |-------------------|:--------------------------------------------------------------------:|
 | `scp source.address:/path/ destination.address:/path/`| Secure copy with paths |
 
--- *Slide End* --
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 
 ### Part 2: Synchronising Files and Directories I
 * The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes. The source or destination address should also require a remote shell login. For example; `rsync -avz testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:`
@@ -207,15 +231,15 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 |-------------------|:--------------------------------------------------------------------:|
 | `rsync source destination`| General rsync command  |
 | `rsync -avze ssh username@remotemachine:/path/to/source .` | With ssh encryption |
--- *Slide End* --
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 
 ### Part 2: Synchronising Files and Directories II
 * The `rsync -avz` command ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. 
 * Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".
 
--- *Slide End* --
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 
 ### Part 2: Synchronising Files and Directories III
 * Rsync can be used in a synchronise mode with the --delete flag.  Consider this with the `-n`, or `--dry-run` options first!
@@ -223,53 +247,41 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
 | `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise source and destination  |
--- *Slide End* --
-
--- *Slide* --
-### Part 2: Creating Directories, Moving Files
-* Directories can be created with the `mkdir` command (e.g., `mkdir braf`).
-* Files can be copies with the `cp` command (e.g., `cp gattaca.txt gattaca2.txt`)
-* Files can be moved with the `mv` command (e.g., `mv gattaca2.txt braf`)
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: File Differences
 * File differences can be determined by timestamp (e.g., `ls -l gattaca.txt braf/gattaca2.txt`)
 * Content differences can be determined by the `diff` command (e.g., `diff gattaca.txt braf/gattaca.txt`)
 * For a side-by-side representation use the command `sdiff` instead.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Searches and Wildcards
 * To search for files use the find command (e.g., `find . -name '*.txt'`). See also `man find`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*`)
 * The most common wildcare is `*`, but there is also `?` (single character).
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Deletions
 * Files can be deleted with the `rm` command (e.g., `rm gattaca.txt`)
 * Empty directories can be deleted with the `rmdir` command (e.g., `rmdir braf`)
 * Directories, files, subdirectories etc can be delted with `rm -rf`.
 * BE VERY CAREFUL!
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: Why The File Differences Mattered
 <blockquote>
 BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers. In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. 
 </blockquote>
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Environment Modules 
 
 * Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
 * The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Module Commands I
 
 | Command                         | Explanation                                            |
@@ -282,67 +294,57 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 | `module list`                 | lists all the modules currently loaded.                |
 
 
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Module Commands II
 * There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
 * On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for modules not available for the user to load.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Portable Batch System
 * The Portable Batch System (or simply PBS) is a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources.
 * Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro. TORQUE is used on the Edward HPC system.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: SLURM
 * Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
 * There is a repository for converting PBS to SLURM: https://github.com/bjpop/pbs2slurm
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Job Submission Principles
 * The steps for job submission are (a) setup and launch., (b) monitor., and (c) retrieve results and analyse. Jobs are launched from the login node with resource requests and, when the job scheduler decides, run on compute nodes. Some directories (e.g.,. user home or project directories) are shared across the entire cluster so output is an accessible place.
 * A cluster is a shared environment thus a a resource requesting system. Policies ensure that everyone has a "fair share" to the resources (e.g., user processor limits).
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: DON'T RUN JOBS ON THE LOGIN NODE!
 * The login node is a **particularly** shared resource. All users will access the login node in order to check their files, submit jobs etc. If one or more users start to run computationally or I/O intensive tasks on the login node (such as forwarding of graphics, copying large files, running multicore jobs), then that will make operations difficult for everyone.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Graphic from IBM 'Red Book' on Job Submission
 <img src="http://levlafayette.com/files/rabbitjobs.png" width="100%" height="100%" title="Job submission using rabbits" />
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Job Setup I
 * Setup and launch consists of writing a short script that initially makes resource requests 
 (walltime, processors, memory, queues) and then commands (loading modules, changing 
 directories, running executables against datasets etc), and optionally checking queueing system.
 * Core command for checking queue `showq` (TORQUE), `squeue` (SLURM)
 * Core command for job submission `qsub [jobscript]` (TORQUE), `sbatch [jobscript]` (SLURM)
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Job Setup II
 * TORQUE jobs must include `cd $PBS_O_WORKDIR` to change to the directory where they were launched. SLURM jobs do not require this. 
 * TORQUE jobs do not parse the user's environment to the compute node by default; the `#$PBS -V` command is required. SLURM does this by default.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 3: Status and Output
 * Core command for checking job `qstat [jobid]` (TORQUE), `checkjob [jobid]` (Moab), `squeue -j [jobid]` (SLURM), detailed command `scontrol show job [jobid]` (SLURM) 
 * Core command for deleting job `qdel [jobid]` (TORQUE), `scancel [jobid]` (SLURM)
 * Both TORQUE and Slurm provide error and output files (combined into one by default in 
 SLURM). They may also have files for post-job processing. Graphic visualisation is best done on 
 the desktop.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4: Single Core Job on Edward and Spartan
 
 | TORQUE (Edward)                     | SLURM (Spartan)                                       | 
@@ -354,9 +356,8 @@ the desktop.
 |`cd $PBS_O_WORKDIR`                  | `#SBATCH ­­ntasks=1`                                    |
 |`module load my­app­compiler/version`  | `module load my­app­compiler/version`                   |
 |`my­app data`                         | `my­app data`                                          |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4 : Multicore Jobs on Edward and Spartan
 
 * Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
@@ -365,9 +366,8 @@ same script as previously provided but change the resource request as follows:
 * For example shared-memory multithreaded jobs on SLURM/Spartan (e.g., OpenMP), modify the 
 --cpus-per-task to a maximum of 16, which is the maximum number of cores on a single instance.
 `#SBATCH ­­cpus­per­task=16`
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4 : Multinode Jobs Spartan
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
@@ -380,9 +380,8 @@ invoked and the resource requests altered e.g.,
 `srun my­mpi­app`
 
 * Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4 : Job/Batch Arrays
 * With a job or batch array the same batch script, and therefore the same resource requests, is used multiple  times. A typical example is to apply the same task across multiple datasets. The following example submits 10 batch jobs with myapp running against datasets dataset1.csv, dataset2.csv, ... 
 dataset10.csv
@@ -392,25 +391,22 @@ dataset10.csv
 
 `#SBATCH ­­array=1­-10`<br />
 `myapp ${SLURM_ARRAY_TASK_ID}.csv`
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4 : Job/Batch Dependencies
 * A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job.
 
 `#PBS ­-W x=depend:afterok:myfirstjob`<br />
 `#SBATCH ­­dependency=afterok:myfirstjobid mysecondjob`
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 4: Interactive Jobs
 * In TORQUE or SLURM, based on the resource requests made on the command  line, puts the user on to a compute node. This is typically done if they user wants to run a  large script (and shouldn't do it on the login node), or wants to test or debug a job. The  following command would launch one node with two processors for ten minutes.
 
 `[lev@edward ~]$ qsub -­l nodes=1:ppn=2,walltime=0:10:0 ­I`<br />
 `[llafayette@unimelb.edu.au@spartan interact]$ sinteractive ­­nodes=1 ­­ntasks­per­node=2 ­­time=0:10:0`
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 5: User Commands PBS/Torque SLURM
 
 | User Commad    | TORQUE (Edward)       | SLURM (Spartan)         | 
@@ -422,9 +418,8 @@ dataset10.csv
 |Node list       |pbsnodes -a            |sinfo -N                 |
 |Queue list      |qstat -Q               |squeue                   |
 |Cluster status  |showq                  |qstatus -a               |
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 5: Job Commands PBS/Torque SLURM
 | Job Specification     | TORQUE (Edward)        | SLURM (Spartan)            | 
 |-----------------------|------------------------|---------------------------:|
@@ -438,9 +433,8 @@ dataset10.csv
 |Event Notification     |`-m abe`                |`--mail-type=[events]`      |
 |Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`        |
 |Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`|
--- *Slide End* --
-
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 5: Environment Commands PBS/Torque SLURM
 | Environment Command   | TORQUE (Edward)       | SLURM (Spartan)         | 
 |-----------------------|-----------------------|------------------------:|
@@ -449,7 +443,59 @@ dataset10.csv
 |Submit Host            |`$PBS_O_HOST`          |`$SLURM_SUBMIT_HOST`     |
 |Node List              |`$PBS_NODEFILE`        |`$SLURM_JOB_NODELIST`    |
 |Job Array Index        |`$PBS_ARRAYID`         |`$SLURM_ARRAY_TASK_ID`   |
--- *Slide End* --
--- *Slide* --
+</script></section>
+<section data-markdown><script type="text/template">
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/hypnotoad.png" />
--- *Slide End* --
+</script></section>
+    </div>
+
+</div>
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+
+        transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'reveal.js/plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
