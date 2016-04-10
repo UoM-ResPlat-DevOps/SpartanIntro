@@ -451,5 +451,5 @@ dataset10.csv
 |Job Array Index        |`$PBS_ARRAYID`         |`$SLURM_ARRAY_TASK_ID`   |
 -- *Slide End* --
 -- *Slide* --
-<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/hypnotoad.png" />
+<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/hypnotoad.png" width="150%" height="150%" />
 -- *Slide End* --
