@@ -48,7 +48,7 @@
 ### Welcome to the Introduction to Spartan HPC Course
 * Lev Lafayette has worked as an HPC sysadmin for since 2007, first at the Victorian Partnership for Advanced Computing, now at the University of Melbourne. Has worked in IT since 1999.
 * Has taught approximately 150 day-long classes at 17 different research institutions across Australia since 2012.
-* Collects degrees for fun. Profit is accidential. Doesn't actually have a computer ccience degree - but does have a postgraduate degee in Adult and Tertiary Education.
+* Collects degrees for fun. Profit is accidential. Doesn't actually have a computer science degree - but does have a postgraduate degee in Adult and Tertiary Education.
 * Stalk me at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
 </script></section>
 <section data-markdown><script type="text/template">
@@ -371,12 +371,12 @@ same script as previously provided but change the resource request as follows:
 ### Part 4 : Multinode Jobs Spartan
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
-`#!/bin/bash`
-`#SBATCH -­p cloud`
-`#SBATCH ­­nodes=2`
-`#SBATCH ­­ntasks=2`
-`#SBATCH ­­cpus­per­task=1`
-`module load my­app­compiler/version`
+`#!/bin/bash`<br />
+`#SBATCH -­p cloud`<br />
+`#SBATCH ­­nodes=2`<br />
+`#SBATCH ­­ntasks=2`<br />
+`#SBATCH ­­cpus­per­task=1`<br />
+`module load my­app­compiler/version`<br />
 `srun my­mpi­app`
 
 * Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
