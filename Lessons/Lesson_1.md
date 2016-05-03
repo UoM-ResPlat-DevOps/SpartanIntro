@@ -97,7 +97,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * The command­line interface provides a great deal more power and is very resource efficient. 
 * GNU/Linux scales and does so with stability and efficiency.
 * Critical software such as the Message Parsing Interface (MPI) and nearly all scientific programs are designed to work with GNU/Linux. 
-* The operating system and many applications are provided as "free and open source" whiich are better placed to improve, optimize and maintain.
+* The operating system and many applications are provided as "free and open source" which are better placed to improve, optimize and maintain.
 -- *Slide End* --
 
 -- *Slide* --
