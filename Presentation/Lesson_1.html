@@ -47,8 +47,8 @@
 <section data-markdown><script type="text/template">
 ### Welcome to the Introduction to Spartan HPC Course
 * Lev Lafayette has worked as an HPC sysadmin for since 2007, first at the Victorian Partnership for Advanced Computing, now at the University of Melbourne. Has worked in IT since 1999.
-* Has taught approximately 150 day-long classes at 17 different research institutions across Australia since 2012.
-* Collects degrees for fun. Profit is accidential. Doesn't actually have a computer science degree - but does have a postgraduate degee in Adult and Tertiary Education.
+* Has taught approximately 175 day-long classes at 17 different research institutions across Australia since 2012.
+* Collects degrees for fun.
 * Stalk me at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
 </script></section>
 <section data-markdown><script type="text/template">
@@ -58,28 +58,28 @@
 * Part 3: Learning about Environment Modules and the SLURM job submission system.
 * Part 4: Submitting test jobs.
 * Part 5: TORQUE/Moab and SLURM Command Summaries
-* Some live notes for the day will be on https://etherpad.openstack.org/p/SpartanIntro
+</script></section>
+<section data-markdown><script type="text/template">
+### Goals for today
 * A copy of the slides and same code is available at: https://github.com/UoM-ResPlat-DevOps/SpartanIntro
 </script></section>
 <section data-markdown><script type="text/template">
-### Part 1: About Supercomputers and High Performance Computers
+### Part 1: Supercomputers and High Performance Computers
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
 * One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge is a broader, more interesting metric.
 * High Performance Computer (HPC) is any computer system whose architecture allows for above average performance.
 </script></section>
 <section data-markdown><script type="text/template">
-### Part 1: Cluster Computing and Scientific Computing
+### Part 1: Clusters and Scientific Computing
 * Clustered computing is when two or more computers serve a single resource. This improves 
 performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
-* Scientific (or research) computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever scientists use and do.
-* Note issues such as reproducibility, access to datasets and environments etc.
+* Scientific (or research) computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever scientists use and do. Not issues of producibility and environments.
 </script></section>
 <section data-markdown><script type="text/template">
-### Part 1: Parallel Computing and Parallel Programming
+### Part 1: Parallel Computing
 * Cluster computing with data parallelism: The horse and cart example.
 * With a cluster architecture, applications can be more easily parallelised across them. Parallel computing refers to the submission of jobs or processes over multiple processors and by splitting up the data or tasks between them.
-* Further examples of serial versus parallel; random number generation, driving a car. 
-* Some applications have included weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies. Reality is a parallel system!
+* Further examples of serial versus parallel; random number generation, driving a car, weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 1: Generic HPC Cluster Design
@@ -94,32 +94,31 @@ performance and provides redundancy in case of failure system. Typically commodi
 <section data-markdown><script type="text/template">
 ### Part 1: What's Different About Spartan?
 * New system is Spartan (not  (not Æthelstan or Ælfweard)
-* University desired a 'more unified experience to access compute services'. 
-* Recommended solution is to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
-* Matches Sparta's citenzship structure; the few Spartiate citizens are bare metal HPC, the more numerous Perioeci free inhabitants are vHPC nodes, and the many Helot slaves are elastic compute nodes.
-* Spartan is not "HPC in the Cloud", it's a chimera.
+* Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
+* Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
 </script></section>
 <section data-markdown><script type="text/template">
-### Part 1: Spartan HPC/Cloud Hybrid Design
+### Part 1: Spartan Design
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/spartanlayout.png" />
 </script></section>
 <section data-markdown><script type="text/template">
-### Part I: Logging in and Help
+### Part I: Logging In
+* Spartan (like Edward) uses its own authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
+* Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. 
+* Participants in a project can be researchers or research support staff from anywhere.
+</script></section>
+<section data-markdown><script type="text/template">
+### Part I: Logging In
 * To log on to a HPC system, you will need a user account and password and a Secure Shell (ssh) client. Linux distributions almost always include SSH as part of the default installation as does 
 Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http://putty.org). 
 * To transfer files use scp, WinSCP, Filezilla (https://filezilla-project.org/), or rsync.
-* Logins to Spartan are based on University Active Directory credentials.
+* Example login: `lev@spartan.hpc.unimelb.edu.au`
+* Consider using an `.ssh/config` flile!
 </script></section>
 <section data-markdown><script type="text/template">
-### Part I: Logging in and Help II
-* If a user has problems with submitting a job, needs a new application or extension to an existing application installed, if their submissions are generated unexpected errors etc., an email can be sent to: hpc­-support@unimelb.edu.au
-* Example general logins:
-`ssh your­unimelb­email@spartan.hpc.unimelb.edu.au`
-`ssh 'your­unimelb­email'@spartan.hpc.unimelb.edu.au`
-`ssh UNIMELB\\yourUniID@spartan.hpc.unimelb.edu`
-* Example specific login.
-`ssh llafayette@spartan.hpc.unimelb.edu.au`
-* An ~/.ssh/config file on your device will make all this easier!
+### Part I: Helpdesk
+* If a user has problems with submitting a job, needs a new application or extension to an existing application installed, if their submissions are generated unexpected errors etc., an email can be sent to: `hpc­-support@unimelb.edu.au`. 
+* Do not email individual sysadmins. Be informative about the error or issue.
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 2: This is a GNU/Linux CLI World 
@@ -131,7 +130,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * The command­line interface provides a great deal more power and is very resource efficient. 
 * GNU/Linux scales and does so with stability and efficiency.
 * Critical software such as the Message Parsing Interface (MPI) and nearly all scientific programs are designed to work with GNU/Linux. 
-* The operating system and many applications are provided as "free and open source" whiich are better placed to improve, optimize and maintain.
+* The operating system and many applications are provided as "free and open source" which are better placed to improve, optimize and maintain.
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 2: Exploring The Environment
@@ -279,6 +278,8 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 
 * Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
+</script></section>
+<section data-markdown><script type="text/template">
 * The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
 </script></section>
 <section data-markdown><script type="text/template">
