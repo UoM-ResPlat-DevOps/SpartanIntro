@@ -3,7 +3,13 @@
 * Lev Lafayette has worked as an HPC sysadmin for since 2007, first at the Victorian Partnership for Advanced Computing, now at the University of Melbourne. Has worked in IT since 1999.
 * Has taught approximately 175 day-long classes at 17 different research institutions across Australia since 2012.
 * Collects degrees for fun.
-* Stalk me at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
+* Stalk him at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
+-- *Slide End* --
+
+-- *Slide* --
+### Welcome to the Introduction to Spartan HPC Course cont..
+* David Perry is an engineer and scientist, and completed his PhD "Temporal Processing in the Deafened Auditory Cortex" in 2003. He's since worked in bionics, climate change, renewable energy, agriculture and the internet of things.
+* Stalk him at Twitter @dwjperry
 -- *Slide End* --
 
 -- *Slide* --
@@ -16,7 +22,7 @@
 -- *Slide End* --
 
 -- *Slide* --
-### Goals for today
+### Slide Respository
 * A copy of the slides and same code is available at: https://github.com/UoM-ResPlat-DevOps/SpartanIntro
 -- *Slide End* --
 
@@ -104,7 +110,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part 2: Exploring The Environment
 * When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). 
-* "Everything in the UNIX system is a file"; which means that files, directories, and any input-output resources (disks, keyboard, memory, etc) are treated as a stream of bytes through the filesystem.
+* "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
 
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
@@ -117,6 +123,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 ### Part 2: Command Options
 * Linux commands often come with options expressed as:
 `<command> --<option[s]>`
+* Options can be expressed as full words or abbreviated characters.
 
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
@@ -125,7 +132,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: The Online Manual
-* Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. A more verbose alternative to man with a simple hypertext system is info. 
+* Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. A verbose alternative to man is info. 
 
 | Command     | Explanation                                                              |
 |-------------|:------------------------------------------------------------------------:|
@@ -169,20 +176,19 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Copying and Transferring Files on Local Systems
-* To get a copy of the files from an external source to your home directory, you will probably want to use `wget` or `git`. (e.g., `wget https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Resources/gattaca.txt`)
+### Part 2: Copying Files to a Local Systems
+* To get a copy of the files from an external source to your home directory, you will probably want to use `wget`, or `git`, or `scp`.
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
 | `wget URL`      | Non-interactive download of files over http, https, ftp etc.         |
 | `git clone URL` | Clone a repository into a new directory.                                        |
-
-
 -- *Slide End* --
 
 -- *Slide* --
 * To copy a file from within a system use the `cp` command. Common options include `-r` to copy and entire directory
- 
+
+### Part 2: Copying Files Within a Local Systems 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
 | `cp source destination`      | Copy a file from source to destination         |
@@ -191,34 +197,41 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Copying and Transferring Files Between Systems
-* To copy files to between systems desktop use SCP (secure copy protocol) or SFTP (secure file transfer protocol), combining the ssh and cp functionality. The `cp` options can also be used. The source or destination address should also require a remote shell login. For example; `scp -r testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:` Note the colon at the end!
+### Part 2: Copying Files Between Systems
+* To copy files to between systems desktop use SCP (secure copy protocol) or SFTP (secure file transfer protocol), combining the ssh and cp functionality. The `cp` options can also be used. The source or destination address should also require a remote shell login.
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
-| `scp source.address:/path/ destination.address:/path/`| Secure copy with paths |
+| `scp source.address:/path/ destination.address:/path/`| Copies files on a network |
 
 -- *Slide End* --
--- *Slide* --
 
+-- *Slide* --
 ### Part 2: Synchronising Files and Directories I
-* The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes. The source or destination address should also require a remote shell login. For example; `rsync -avz testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:`
+* The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes. The source or destination address should also require a remote shell login. 
+
+For example; `rsync -avz testdir llafayette@unimelb.edu.au@spartan.hpc.unimelb.edu.au:`
+-- *Slide End* --
+
+-- *Slide* --
+### Part 2: Synchronising Files and Directories II
 
 | Command           | Explanation                                                          |
 |-------------------|:--------------------------------------------------------------------:|
 | `rsync source destination`| General rsync command  |
 | `rsync -avze ssh username@remotemachine:/path/to/source .` | With ssh encryption |
 -- *Slide End* --
--- *Slide* --
 
-### Part 2: Synchronising Files and Directories II
-* The `rsync -avz` command ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. 
-* Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".
-
--- *Slide End* --
 -- *Slide* --
 
 ### Part 2: Synchronising Files and Directories III
+* The `rsync -avz` command ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. 
+* Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".
+-- *Slide End* --
+
+-- *Slide* --
+
+### Part 2: Synchronising Files and Directories IV
 * Rsync can be used in a synchronise mode with the --delete flag.  Consider this with the `-n`, or `--dry-run` options first!
 
 | Command           | Explanation                                                          |
@@ -229,7 +242,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part 2: Creating Directories, Moving Files
 * Directories can be created with the `mkdir` command (e.g., `mkdir braf`).
-* Files can be copies with the `cp` command (e.g., `cp gattaca.txt gattaca2.txt`)
+* Files can be copied with the `cp` command (e.g., `cp gattaca.txt gattaca2.txt`)
 * Files can be moved with the `mv` command (e.g., `mv gattaca2.txt braf`)
 
 -- *Slide* --
@@ -263,19 +276,18 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Environment Modules 
-
+### Part 3: Environment Modules I
 * Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
 -- *Slide End* --
 
 -- *Slide* --
+### Part 3: Environment Modules  II
 * The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 3: Module Commands I
-
 | Command                         | Explanation                                            |
 |---------------------------------|:------------------------------------------------------:|
 | `module help`                 | List of switches, commands and arguments for modules   |
@@ -318,8 +330,8 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Graphic from IBM 'Red Book' on Job Submission
 <img src="http://levlafayette.com/files/rabbitjobs.png" width="100%" height="100%" title="Job submission using rabbits" />
+* From the IBM 'Red Book' on Job Submission.
 -- *Slide End* --
 
 -- *Slide* --
@@ -347,7 +359,7 @@ the desktop.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 4: Single Core Job on Edward and Spartan
+### Part 4: Single Core Job
 
 | TORQUE (Edward)                     | SLURM (Spartan)                                       | 
 |-------------------------------------|------------------------------------------------------:|
@@ -361,7 +373,7 @@ the desktop.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 4 : Multicore Jobs on Edward and Spartan
+### Part 4 : Multicore Jobs
 
 * Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
 same script as previously provided but change the resource request as follows:
@@ -391,7 +403,7 @@ invoked and the resource requests altered e.g.,
 * With a job or batch array the same batch script, and therefore the same resource requests, is used multiple  times. A typical example is to apply the same task across multiple datasets. The following example submits 10 batch jobs with myapp running against datasets dataset1.csv, dataset2.csv, ... 
 dataset10.csv
 
-`#PBS ­-t 1­10`<br />
+`#PBS ­-t 1­-10`<br />
 `myapp ${PBS_ARRAYID}.csv`<br />
 
 `#SBATCH ­­array=1­-10`<br />
@@ -415,7 +427,7 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: User Commands PBS/Torque SLURM
+### Part 5: User Commands
 
 | User Commad    | TORQUE (Edward)       | SLURM (Spartan)         | 
 |----------------|-----------------------|------------------------:|
@@ -429,7 +441,7 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: Job Commands PBS/Torque SLURM
+### Part 5: Job Commands
 | Job Specification     | TORQUE (Edward)        | SLURM (Spartan)            | 
 |-----------------------|------------------------|---------------------------:|
 |Script directive       |`#PBS`                  |`#SBATCH`                   |
@@ -445,7 +457,7 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: Environment Commands PBS/Torque SLURM
+### Part 5: Environment Commands
 | Environment Command   | TORQUE (Edward)       | SLURM (Spartan)         | 
 |-----------------------|-----------------------|------------------------:|
 |Job ID                 |`$PBS_JOBID`           |`$SLURM_JOBID`           |
