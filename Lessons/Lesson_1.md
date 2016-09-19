@@ -61,7 +61,7 @@ performance and provides redundancy in case of failure system. Typically commodi
 
 -- *Slide* --
 ### Part 1: What's Different About Spartan?
-* New system is Spartan (not  (not Æthelstan or Ælfweard)
+* New system is Spartan (not Æthelstan or Ælfweard)
 * Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
 * Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
 -- *Slide End* --
