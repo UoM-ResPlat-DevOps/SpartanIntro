@@ -1,29 +1,16 @@
 -- *Slide* --
-### Welcome to the Introduction to Spartan HPC Course
-* Lev Lafayette has worked as an HPC sysadmin for since 2007, first at the Victorian Partnership for Advanced Computing, now at the University of Melbourne. Has worked in IT since 1999.
-* Has taught approximately 175 day-long classes at 17 different research institutions across Australia since 2012.
-* Collects degrees for fun.
-* Stalk him at: http://levlafayette.com/ or https://www.linkedin.com/in/levlafayette
--- *Slide End* --
-
--- *Slide* --
-### Welcome to the Introduction to Spartan HPC Course cont..
-* David Perry is an engineer and scientist, and completed his PhD "Temporal Processing in the Deafened Auditory Cortex" in 2003. He's since worked in bionics, climate change, renewable energy, agriculture and the internet of things.
-* Stalk him at Twitter @dwjperry
--- *Slide End* --
-
--- *Slide* --
 ### Goals for today
 * Part 1: Learning about supercomputers and Spartan.
 * Part 2: Logging on an exploring the Linux Environment.
-* Part 3: Learning about Environment Modules and the SLURM job submission system.
+* Part 3: Learning about Environment Modules and the Slurm job submission system.
 * Part 4: Submitting test jobs.
-* Part 5: TORQUE/Moab and SLURM Command Summaries
+* Part 5: TORQUE/Moab and Slurm Command Summaries
 -- *Slide End* --
 
 -- *Slide* --
 ### Slide Respository
 * A copy of the slides and same code is available at: https://github.com/UoM-ResPlat-DevOps/SpartanIntro
+* A copy of information about HPC at the University of Melbourne is available at https://dashboard.hpc.unimelb.edu.au
 -- *Slide End* --
 
 -- *Slide* --
@@ -35,8 +22,7 @@
 
 -- *Slide* --
 ### Part 1: Clusters and Scientific Computing
-* Clustered computing is when two or more computers serve a single resource. This improves 
-performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
+* Clustered computing is when two or more computers serve a single resource. This improves performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
 * Scientific (or research) computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever scientists use and do. Not issues of producibility and environments.
 -- *Slide End* --
 
@@ -53,8 +39,8 @@ performance and provides redundancy in case of failure system. Typically commodi
 -- *Slide End* --
 
 -- *Slide* --
-### Part 1: King Edward is Being Retired
-* Since 2011 UniMelb's general cluster has been Edward (previous system was Alfred).
+### Part 1: King Edward Is No More!
+* Since 2011 UniMelb's general cluster was been Edward (previous system was Alfred).
 * A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011.
 * Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
 -- *Slide End* --
@@ -96,7 +82,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part 2: This is a GNU/Linux CLI World 
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/gnulinux.png" align="center" height="25%" width="25%" vspace="5" hspace="5" />
-* In November 2015 of the Top 500 Supercomputers worldwide, every single machine used a  "UNIX­like" operating system; 98.8% used Linux, 1.2% used AIX.
+* In November 2016 of the Top 500 Supercomputers worldwide, every single machine used a  "UNIX­like" operating system; 99.6% used Linux, 0.4% others.
 -- *Slide End* --
 
 -- *Slide* --
@@ -313,7 +299,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: SLURM
+### Part 3: Slurm
 * Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
 * There is a repository for converting PBS to SLURM: https://github.com/bjpop/pbs2slurm
 -- *Slide End* --
@@ -361,7 +347,7 @@ the desktop.
 -- *Slide* --
 ### Part 4: Single Core Job
 
-| TORQUE (Edward)                     | SLURM (Spartan)                                       | 
+| TORQUE (Edward)                     | Slurm (Spartan)                                       | 
 |-------------------------------------|------------------------------------------------------:|
 |`#!/bin/bash`                        | `#!/bin/bash`                                         |
 |`#PBS ­-q compute`                    | `#SBATCH -­p cloud`                                    |
@@ -429,7 +415,7 @@ dataset10.csv
 -- *Slide* --
 ### Part 5: User Commands
 
-| User Commad    | TORQUE (Edward)       | SLURM (Spartan)         | 
+| User Commad    | TORQUE (Edward)       | Slurm (Spartan)         | 
 |----------------|-----------------------|------------------------:|
 |Job submission  |qsub [script_file]     |sbatch [script_file]     |
 |Job delete      |qdel [job_id]          |scancel [job_id]         |
@@ -437,12 +423,12 @@ dataset10.csv
 |Job status      |qstat -u [user_name]   |squeue -u [user_name]    |
 |Node list       |pbsnodes -a            |sinfo -N                 |
 |Queue list      |qstat -Q               |squeue                   |
-|Cluster status  |showq                  |qstatus -a               |
+|Cluster status  |showq                  |sinfo               	   |
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 5: Job Commands
-| Job Specification     | TORQUE (Edward)        | SLURM (Spartan)            | 
+| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)            | 
 |-----------------------|------------------------|---------------------------:|
 |Script directive       |`#PBS`                  |`#SBATCH`                   |
 |Queue                  |`-q [queue]`            |`-p [queue]`                |
@@ -458,7 +444,7 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: Environment Commands
-| Environment Command   | TORQUE (Edward)       | SLURM (Spartan)         | 
+| Environment Command   | TORQUE (Edward)       | Slurm (Spartan)         | 
 |-----------------------|-----------------------|------------------------:|
 |Job ID                 |`$PBS_JOBID`           |`$SLURM_JOBID`           |
 |Submit Directory       |`$PBS_O_WORKDIR`       |`$SLURM_SUBMIT_DIR`      |
