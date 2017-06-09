@@ -44,9 +44,6 @@
 <!-- to give this presentation list items numbered A, B, C etc.. for use in questions -->
 <style type="text/css">.reveal ol {list-style-type: upper-alpha;}</style>
 <!-- Slides go here -->
-<ul>
-<li><a href="Lesson_1.html#/">Lesson_1</a></li>
-</ul>
     </div>
 
 </div>
