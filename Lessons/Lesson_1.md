@@ -425,6 +425,12 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
+### Part 4: Backfilling
+* Many schedulers and resource managers use a backfilling algorithm to improve system utilisation and maximise job throughout. 
+* When more resource intensive (e.g., multiple node) jobs are running it is possible that gaps ends up in the resource allocation. To fill these gaps a best effort is made for low-resource jobs to slot into these spaces.
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 4: Memory Allocation
 * By default the scheduler will set memory equal to the total amount on a compute node divided by the number of cores requested. In some cases this might not be enough (e.g., very large dataset that needs to be loaded with low level of parallelisation).
 * Additional memory can be allocated with the `--mem=[mem][M|G|T]` directive (entire job) or `--mem-per-cpu=[mem][M|G|T]` (per core). Maximum should be based around total cores -1 (for system processes).
