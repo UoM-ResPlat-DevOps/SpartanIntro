@@ -9,34 +9,45 @@
 
 -- *Slide* --
 ### Slide Respository
-* A copy of the slides and same code is available at: https://github.com/UoM-ResPlat-DevOps/SpartanIntro
-* A copy of information about HPC at the University of Melbourne is available at https://dashboard.hpc.unimelb.edu.au
-* Also see `man spartan` on the cluster and the `/usr/local/common/` directories - more on that later.
+* A copy of these slides and sample code is available at: `https://github.com/UoM-ResPlat-DevOps/SpartanIntro`
+* A copy of information about HPC at the University of Melbourne is available at `https://dashboard.hpc.unimelb.edu.au`. See also `man spartan` on the cluster and the `/usr/local/common/` directories for more help and code exammples.
+* Help is available at: `hpc-support@unimelb.edu.au`. Other courses also conducted by Research Platforms.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 1: Supercomputers and High Performance Computers
+### Part 1: Supercomputers and High Performance Computers etc
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
 * One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge is a broader, more interesting metric.
 * High Performance Computer (HPC) is any computer system whose architecture allows for above average performance.
+* High Throughput Computing (HTC) is an architecture for maximum job completion; capability vs capacity computing.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 1: Clusters and Scientific Computing
+### Part 1: Clusters and Research Computing
 * Clustered computing is when two or more computers serve a single resource. This improves performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
-* Scientific (or research) computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever scientists use and do. Not issues of producibility and environments.
+* Research computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever researchers use and do. Not issues of producibility and environments.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 1: Parallel Computing
-* Cluster computing with data parallelism: The horse and cart example.
 * With a cluster architecture, applications can be more easily parallelised across them. Parallel computing refers to the submission of jobs or processes over multiple processors and by splitting up the data or tasks between them.
-* Further examples of serial versus parallel; random number generation, driving a car, weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
+* Data parallelism, running same task in parallel; the horse and cart example, Monte Carlo experiments.
+* Task parallel, running indeopendent tasks in parallel with communication; driving a car, molecullar modelling.
+* Further examples of serial versus parallel; weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
+-- *Slide End* --
+
+-- *Slide* --
+### Part 1: HPC Cluster and Parallel Processing Components
+* A chassis or rack, containing multiple computer system units, interconnect, and providing power.
+* Computer system units or nodes, containing memory, local disk, and sockets.
+* Sockets contain a processor which has one or more cores which do the processing.
+* Logical processes have shared resources (e.g., memory) which may have multiple instruction stream threads.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 1: Generic HPC Cluster Design
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/genericcluster.png" />
+* Image originally from the Victorian Partnership for Advanced Computing.
 -- *Slide End* --
 
 -- *Slide* --
@@ -59,25 +70,34 @@
 -- *Slide End* --
 
 -- *Slide* --
+### Part 1: Spartan Hardware
+* Physical partition is c276 cores, 21 GB per core,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 192GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
+* Cloud partitions is almost 400 virtual machines with over 3,000 cores, dual CPU E5-2683 v4 2.1GHz, 10GBe Cisco Nexus. 
+* There is also a GPU partition (Dual Nvidia Tesla K80, *very* big expansion this year), and departmental partitions (water and ashley).
+* Storage: 8TB `/scratch` NFS over RDMA, `/project` and `/home` NFS, 65TB.
+-- *Slide End* --
+
+-- *Slide* --
 ### Part I: Logging In
 * Spartan (like Edward) uses its own authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
-* Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. 
-* Participants in a project can be researchers or research support staff from anywhere.
+* Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
+* Projects have their own project directory for files.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part I: Logging In
 * To log on to a HPC system, you will need a user account and password and a Secure Shell (ssh) client. Linux distributions almost always include SSH as part of the default installation as does 
 Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http://putty.org). 
-* To transfer files use scp, WinSCP, Filezilla (https://filezilla-project.org/), or rsync.
+* To transfer files use scp, WinSCP, Filezilla (`https://filezilla-project.org/`), or rsync.
 * Example login: `lev@spartan.hpc.unimelb.edu.au`
-* Consider using an `.ssh/config` flile!
+* Consider using an `.ssh/config` file and using passwordless SSH by creating a keypair and adding to your `.ssh/authorized_keys` file on Spartan.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part I: Helpdesk
-* If a user has problems with submitting a job, needs a new application or extension to an existing application installed, if their submissions are generated unexpected errors etc., an email can be sent to: `hpc­-support@unimelb.edu.au`. 
-* Do not email individual sysadmins. Be informative about the error or issue.
+* Read the Message of the Day when you login!
+* If a user has problems with submitting a job, or needs a new application or extension to an existing application installed, or if their submissions are generated unexpected errors etc., an email can be sent to the helpdesk: `hpc­-support@unimelb.edu.au`. 
+* Do not email individual sysadmins; we need consildated records. Please be informative about the error or issue.
 -- *Slide End* --
 
 -- *Slide* --
@@ -96,7 +116,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: Exploring The Environment
-* When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). 
+* When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). Explore file system hierarchy. Project directory in `/data/projects/<<projectID>>`.
 * "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
 
 | Command     | Explanation                                                                |
@@ -256,7 +276,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 -- *Slide* --
 ### Part 2: Why The File Differences Mattered
 <blockquote>
-BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers. In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which l eads to susceptibility to metastatic melanoma. 
+BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This protein is involved in sending signals inside cells, which are involved in directing cell growth. In 2002, it was shown to be faulty (mutated) in human cancers. In particular the difference that between the two files "ATVKSRWSGS" and "ATEKSRWSGS" is the difference which leads to susceptibility to metastatic melanoma. 
 </blockquote>
 -- *Slide End* --
 
@@ -281,8 +301,6 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 | `module load <modulefile>`    | Loads paths etc to user's environment                  |
 | `module unload <modulefile>`  | Unloads paths etc from user's environment.             |
 | `module list`                 | lists all the modules currently loaded.                |
-
-
 -- *Slide End* --
 
 -- *Slide* --
@@ -295,6 +313,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 ### Part 3: Portable Batch System
 * The Portable Batch System (or simply PBS) is a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources.
 * Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro. TORQUE is used on the Edward HPC system.
+* A batch system typically consists of a resource manager (e.g., TORQUE) and a job scheduler (e.g., Maui, Moab), or a combination (e.g., PBSPro, Slurm).
 -- *Slide End* --
 
 -- *Slide* --
@@ -306,6 +325,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: Job Submission Principles
 * The steps for job submission are (a) setup and launch., (b) monitor., and (c) retrieve results and analyse. Jobs are launched from the login node with resource requests and, when the job scheduler decides, run on compute nodes. Some directories (e.g.,. user home or project directories) are shared across the entire cluster so output is an accessible place.
+* Job scripts are simply resource requests (understood by scheduler), a batch of commands (understood by shell) with output to files.
 * A cluster is a shared environment thus a a resource requesting system. Policies ensure that everyone has a "fair share" to the resources (e.g., user processor limits).
 -- *Slide End* --
 
@@ -345,7 +365,6 @@ the desktop.
 
 -- *Slide* --
 ### Part 4: Single Core Job
-
 | TORQUE (Edward)                     | Slurm (Spartan)                                       | 
 |-------------------------------------|------------------------------------------------------:|
 |`#!/bin/bash`                        | `#!/bin/bash`                                         |
@@ -361,7 +380,6 @@ the desktop.
 
 -- *Slide* --
 ### Part 4 : Multicore Jobs
-
 * Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
 same script as previously provided but change the resource request as follows:
 `#PBS ­-l --nodes=2:ppn=2`
@@ -381,8 +399,6 @@ invoked and the resource requests altered e.g.,
 `#SBATCH ­­--cpus­-per­-task=1`<br />
 `module load my­app­compiler/version`<br />
 `srun my­mpi­app`
-
-* Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
 -- *Slide End* --
 
 -- *Slide* --
@@ -404,8 +420,15 @@ dataset10.csv
 -- *Slide* --
 ### Part 4: Interactive Jobs
 * An interactive job, based on the resource requests made on the command  line, puts the user on to a compute node. This is typically done if they user wants to run a  large script (and shouldn't do it on the login node), or wants to test or debug a job. The  following command would launch one node with two processors for ten minutes.
-`sinteractive ­­nodes=1 ­­ntasks­per­node=2 ­­time=0:10:0`
+`sinteractive ­­--nodes=1 --­­ntasks-­per-­node=2 --­­time=0:10:0`
 * Example and instructions at `/usr/local/common/interact`
+-- *Slide End* --
+
+-- *Slide* --
+### Part 4: Memory Allocation
+* By default the scheduler will set memory equal to the total amount on a compute node divided by the number of cores requested. In some cases this might not be enough (e.g., very large dataset that needs to be loaded with low level of parallelisation).
+* Additional memory can be allocated with the `--mem=[mem][M|G|T]` directive (entire job) or `--mem-per-cpu=[mem][M|G|T]` (per core). Maximum should be based around total cores -1 (for system processes).
+* Not a good allocation of resources. Use only when absolutely necessary.
 -- *Slide End* --
 
 -- *Slide* --
