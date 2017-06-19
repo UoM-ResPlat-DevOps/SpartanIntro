@@ -281,13 +281,13 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Environment Modules I
+### Part 3: A Dynamic Environment
 * Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Environment Modules  II
+### Part 3: Environment Modules  Commands
 * The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
 -- *Slide End* --
 
@@ -317,7 +317,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Slurm
+### Part 3: Slurm Workload Manager
 * Slurm, used on Spartan, began development as a collaborative effort primarily by Lawrence Livermore National Laboratory, SchedMD, Linux NetworX, Hewlett-Packard, and Groupe Bull as a Free Software resource manager. As of November 2015, TOP500 list of most powerful computers in the world indicates that Slurm is the workload manager on six of the top ten systems. Slurm's design is very modular with about 100 optional plugins.
 * There is a repository for converting PBS to Slurm: https://github.com/bjpop/pbs2Slurm
 -- *Slide End* --
