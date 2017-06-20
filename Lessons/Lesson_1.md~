@@ -381,11 +381,10 @@ the desktop.
 -- *Slide* --
 ### Part 4 : Multicore Jobs
 * Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
-same script as previously provided but change the resource request as follows:
-`#PBS ­-l --nodes=2:ppn=2`
+same script as previously provided but change the resource request as follows: `#PBS ­-l --nodes=1:ppn=2`, or for Slurm/Spartan `#SBATCH --nodes=1 #SBATCH --ntasks-per-node=2`
 * For example shared-memory multithreaded jobs on Slurm/Spartan (e.g., OpenMP), modify the 
 --cpus-per-task to a maximum of 16, which is the maximum number of cores on a single instance.
-`#SBATCH ­­--cpus-­per-­task=16`
+`#SBATCH ­­--cpus-­per-­task=8`
 -- *Slide End* --
 
 -- *Slide* --
@@ -393,12 +392,24 @@ same script as previously provided but change the resource request as follows:
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
 `#!/bin/bash`<br />
-`#SBATCH -­p cloud`<br />
+`#SBATCH --­partition physical`<br />
 `#SBATCH ­­--nodes=2`<br />
 `#SBATCH ­­--ntasks=2`<br />
-`#SBATCH ­­--cpus­-per­-task=1`<br />
 `module load my­app­compiler/version`<br />
 `srun my­mpi­app`
+-- *Slide End* --
+
+-- *Slide* --
+### Part 4 : Multiple Job Steps
+* Sometimes a job needs to consist of several steps that need to be carried on sequence, even if the individual components are in parallel. In this case the entire job resource set can be called with an aggregation of walltime and with a maximum reduction operation for memory and resources. e.g.,
+`#!/bin/bash`<br />
+`#SBATCH --­partition physical`<br />
+`#SBATCH ­­--nodes=2`<br />
+`#SBATCH ­­--ntasks=12`<br />
+`#SBATCH --time=24:00:00`<br />
+`srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app`<br />
+`srun -N 1 -n 12 -t 12:00:00 ./myompapp`<br />
+`srun -N 1 -n 1 -t 06:00:00 ./myserialapp`<br />
 -- *Slide End* --
 
 -- *Slide* --
