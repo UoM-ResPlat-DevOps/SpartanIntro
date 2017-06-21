@@ -459,6 +459,8 @@ dataset10.csv
 |Job delete      |qdel [job_id]          |scancel [job_id]         |
 |Job status      |qstat [job_id]         |squeue [job_id]          |
 |Job status      |qstat -u [user_name]   |squeue -u [user_name]    |
+|Job pause	 |qhold [job_id]	 |scontrol hold [job_id]   |
+|Job release	 |qrls [job_id]	         |scontrol release [job_id]|
 |Node list       |pbsnodes -a            |sinfo -N                 |
 |Queue list      |qstat -Q               |squeue                   |
 |Cluster status  |showq                  |sinfo               	   |
@@ -466,18 +468,18 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: Job Commands
-| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)            | 
-|-----------------------|------------------------|---------------------------:|
-|Script directive       |`#PBS`                  |`#SBATCH`                   |
-|Queue                  |`-q [queue]`            |`-p [queue]`                |
-|Job Name               |`-N [name]`             |`--job-name=[name]`         |
-|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]`            |
-|CPU Count              |`-l ppn=[count]`        |`-n [count]`                |
-|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]`        |
-|Event Address          |`-M [address]`          |`--mail-user=[address]`     |
-|Event Notification     |`-m abe`                |`--mail-type=[events]`      |
-|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`        |
-|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`|
+| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)               | 
+|-----------------------|------------------------|------------------------------:|
+|Script directive       |`#PBS`                  |`#SBATCH`                      |
+|Queue                  |`-q [queue]`            |`-p [queue]` `--partition`     |
+|Job Name               |`-N [name]`             |`--job-name=[name]`            |
+|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]` `--nodes`     |
+|CPU/Task Count         |`-l ppn=[count]`        |`-n [count]` `--ntasks`        |
+|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]` `--time`  |
+|Event Address          |`-M [address]`          |`--mail-user=[address]`        |
+|Event Notification     |`-m abe`                |`--mail-type=[events]`         |
+|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`           |
+|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -493,7 +495,7 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: Performance Test
-* Compare the performance of NAMD/VMD Ubiquitin protein under different configurations
+* Compare the performance of NAMD/VMD Ubiquitin protein test case under `/usr/local/common/NAMD` under different configurations
 
 | Nodes and Tasks       | Partition             | Time                    | 
 |-----------------------|-----------------------|------------------------:|

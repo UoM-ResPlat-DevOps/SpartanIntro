@@ -452,13 +452,14 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: User Commands
-
 | User Commad    | TORQUE (Edward)       | Slurm (Spartan)         | 
 |----------------|-----------------------|------------------------:|
 |Job submission  |qsub [script_file]     |sbatch [script_file]     |
 |Job delete      |qdel [job_id]          |scancel [job_id]         |
 |Job status      |qstat [job_id]         |squeue [job_id]          |
 |Job status      |qstat -u [user_name]   |squeue -u [user_name]    |
+|Job pause	 |qhold [job_id]	 |scontrol hold [job_id]   |
+|Job release	 |qrls [job_id]	         |scontrol release [job_id]|
 |Node list       |pbsnodes -a            |sinfo -N                 |
 |Queue list      |qstat -Q               |squeue                   |
 |Cluster status  |showq                  |sinfo               	   |
