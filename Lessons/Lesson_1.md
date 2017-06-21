@@ -375,6 +375,7 @@ the desktop.
 |`module load my­app­compiler/version`  | `module load my­app­compiler/version`                   |
 |`my­app data`                         | `my­app data`                                          |
 
+* Note that Slurm commands have abbreviated or extended versions of resource requests (e.g., `--partition=cloud` or `-p cloud`).
 * Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts.
 -- *Slide End* --
 
@@ -397,19 +398,6 @@ invoked and the resource requests altered e.g.,
 `#SBATCH ­­--ntasks=2`<br />
 `module load my­app­compiler/version`<br />
 `srun my­mpi­app`
--- *Slide End* --
-
--- *Slide* --
-### Part 4 : Multiple Job Steps
-* Sometimes a job needs to consist of several steps that need to be carried on sequence, even if the individual components are in parallel. In this case the entire job resource set can be called with an aggregation of walltime and with a maximum reduction operation for memory and resources. e.g.,
-`#!/bin/bash`<br />
-`#SBATCH --­partition physical`<br />
-`#SBATCH ­­--nodes=2`<br />
-`#SBATCH ­­--ntasks=12`<br />
-`#SBATCH --time=24:00:00`<br />
-`srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app`<br />
-`srun -N 1 -n 12 -t 12:00:00 ./myompapp`<br />
-`srun -N 1 -n 1 -t 06:00:00 ./myserialapp`<br />
 -- *Slide End* --
 
 -- *Slide* --
@@ -436,6 +424,20 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
+### Part 4 : Multiple Job Steps
+* Sometimes a job needs to consist of several steps that need to be carried on sequence, even if the individual components are in parallel. In this case the entire job resource set can be called with an aggregation of walltime and with a maximum reduction operation for memory and resources. e.g.,
+`#!/bin/bash`<br />
+`#SBATCH --­partition physical`<br />
+`#SBATCH ­­--nodes=2`<br />
+`#SBATCH ­­--ntasks=12`<br />
+`#SBATCH --time=24:00:00`<br />
+`srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app`<br />
+`export OMP_NUM_THREADS=6`<br />
+`srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp`<br />
+`srun -N 1 -n 1 -t 06:00:00 ./myserialapp`<br />
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 4: Backfilling
 * Many schedulers and resource managers use a backfilling algorithm to improve system utilisation and maximise job throughout. 
 * When more resource intensive (e.g., multiple node) jobs are running it is possible that gaps ends up in the resource allocation. To fill these gaps a best effort is made for low-resource jobs to slot into these spaces.
@@ -444,7 +446,7 @@ dataset10.csv
 -- *Slide* --
 ### Part 4: Memory Allocation
 * By default the scheduler will set memory equal to the total amount on a compute node divided by the number of cores requested. In some cases this might not be enough (e.g., very large dataset that needs to be loaded with low level of parallelisation).
-* Additional memory can be allocated with the `--mem=[mem][M|G|T]` directive (entire job) or `--mem-per-cpu=[mem][M|G|T]` (per core). Maximum should be based around total cores -1 (for system processes).
+* Additional memory can be allocated with the `--mem=[mem][M|G|T]` directive (entire job) or `--mem-per-cpu=[mem][M|G|T]` (per core). Maximum should be based around total cores -1 (for system processes). The --mem-per-cpu directive is for threads for OpenMP applications and processor ranks for MPI.
 * Not a good allocation of resources. Use only when absolutely necessary.
 -- *Slide End* --
 
@@ -464,18 +466,18 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: Job Commands
-| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)            | 
-|-----------------------|------------------------|---------------------------:|
-|Script directive       |`#PBS`                  |`#SBATCH`                   |
-|Queue                  |`-q [queue]`            |`-p [queue]`                |
-|Job Name               |`-N [name]`             |`--job-name=[name]`         |
-|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]`            |
-|CPU Count              |`-l ppn=[count]`        |`-n [count]`                |
-|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]`        |
-|Event Address          |`-M [address]`          |`--mail-user=[address]`     |
-|Event Notification     |`-m abe`                |`--mail-type=[events]`      |
-|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`        |
-|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`|
+| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)               | 
+|-----------------------|------------------------|------------------------------:|
+|Script directive       |`#PBS`                  |`#SBATCH`                      |
+|Queue                  |`-q [queue]`            |`-p [queue]` `--partition`     |
+|Job Name               |`-N [name]`             |`--job-name=[name]`            |
+|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]` `--nodes`     |
+|CPU/Task Count         |`-l ppn=[count]`        |`-n [count]` `--ntasks`        |
+|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]` `--time`  |
+|Event Address          |`-M [address]`          |`--mail-user=[address]`        |
+|Event Notification     |`-m abe`                |`--mail-type=[events]`         |
+|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`           |
+|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -491,7 +493,7 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: Performance Test
-* Compare the performance of NAMD/VMD Ubiquitin protein under different configurations
+* Compare the performance of NAMD/VMD Ubiquitin protein test case under `/usr/local/common/NAMD` under different configurations
 
 | Nodes and Tasks       | Partition             | Time                    | 
 |-----------------------|-----------------------|------------------------:|
