@@ -461,7 +461,7 @@ dataset10.csv
 |Job pause	 |qhold [job_id]	 |scontrol hold [job_id]   |
 |Job release	 |qrls [job_id]	         |scontrol release [job_id]|
 |Node list       |pbsnodes -a            |sinfo -N                 |
-|Queue list      |qstat -Q               |squeue                   |
+|Queue list      |qstat -Q               |squeue -s                |
 |Cluster status  |showq                  |sinfo               	   |
 -- *Slide End* --
 

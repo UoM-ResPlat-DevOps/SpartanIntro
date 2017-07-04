@@ -452,7 +452,6 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 5: User Commands
-
 | User Commad    | TORQUE (Edward)       | Slurm (Spartan)         | 
 |----------------|-----------------------|------------------------:|
 |Job submission  |qsub [script_file]     |sbatch [script_file]     |

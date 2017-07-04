@@ -1,16 +1,16 @@
 # SpartanIntro
 An four hour training course that provides an introduction to the Spartan HPC/Cloud hybrid and an introduction to the Linux command line.
 
-##Git
+## Git
 
 If you check this repository out be aware that it uses Git submodules to manage the reveal.js dependency. To also checkout reveal.js, you will have to either:
 
-# fetch it all in one hit
+### fetch it all in one hit
 `git clone --recursive https://github.com/UoM-ResPlat-DevOps/SpartanIntro`
 
 Or:
 
-# take it step by step
+### take it step by step
 `git clone https://github.com/UoM-ResPlat-DevOps/SpartanIntro`
 `git submodule init`
 `git submodule update`
@@ -37,7 +37,7 @@ You should see something like the following fly by:
 `Writing to: ./Presentation/Lesson_1.html`
 `Writing to: ./Presentation/index.html`
 
-##Folders
+## Folders
 
 The directories that make up this project are as follows:
 
