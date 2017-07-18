@@ -411,7 +411,7 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 4 : Job/Batch Dependencies
-* A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job.
+* A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job. Multiple job dependencies are specified with colon separated values.
 `#SBATCH ­­dependency=afterok:myfirstjobid mysecondjob`
 * Examples at `/usr/local/common/depend/`
 -- *Slide End* --
