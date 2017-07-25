@@ -15,11 +15,17 @@
 -- *Slide End* --
 
 -- *Slide* --
+### Part I: Helpdesk
+* Read the Message of the Day when you login!
+* If a user has problems with submitting a job, or needs a new application or extension to an existing application installed, or if their submissions are generated unexpected errors etc., an email can be sent to the helpdesk: `hpc­-support@unimelb.edu.au`. 
+* Do not email individual sysadmins; we need consildated records. Please be informative about the error or issue.
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 1: Supercomputers and High Performance Computers etc
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
 * One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge is a broader, more interesting metric.
-* High Performance Computer (HPC) is any computer system whose architecture allows for above average performance.
-* High Throughput Computing (HTC) is an architecture for maximum job completion; capability vs capacity computing.
+* High Performance Computer (HPC) is any computer system whose architecture allows for above average performance. High Throughput Computing (HTC) is an architecture for maximum job completion; capability vs capacity computing.
 -- *Slide End* --
 
 -- *Slide* --
@@ -30,9 +36,7 @@
 
 -- *Slide* --
 ### Part 1: Parallel Computing
-* With a cluster architecture, applications can be more easily parallelised across them. Parallel computing refers to the submission of jobs or processes over multiple processors and by splitting up the data or tasks between them.
-* Data parallelism, running same task in parallel; the horse and cart example, Monte Carlo experiments.
-* Task parallel, running indeopendent tasks in parallel with communication; driving a car, molecullar modelling.
+* With a cluster architecture, applications can be more easily parallelised across them. *Data parallel*, running same task in parallel; the horse and cart example, Monte Carlo experiments. *Task parallel*, running indeopendent tasks in parallel with communication; driving a car, molecullar modelling.
 * Further examples of serial versus parallel; weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
 -- *Slide End* --
 
@@ -79,7 +83,7 @@
 
 -- *Slide* --
 ### Part I: Logging In
-* Spartan (like Edward) uses its own authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
+* Spartan uses its an authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
 * Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
 * Projects have their own project directory for files.
 -- *Slide End* --
@@ -90,20 +94,18 @@
 Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http://putty.org). 
 * To transfer files use scp, WinSCP, Filezilla (`https://filezilla-project.org/`), or rsync.
 * Example login: `lev@spartan.hpc.unimelb.edu.au`
-* Consider using an `.ssh/config` file and using passwordless SSH by creating a keypair and adding to your `.ssh/authorized_keys` file on Spartan.
 -- *Slide End* --
 
 -- *Slide* --
-### Part I: Helpdesk
-* Read the Message of the Day when you login!
-* If a user has problems with submitting a job, or needs a new application or extension to an existing application installed, or if their submissions are generated unexpected errors etc., an email can be sent to the helpdesk: `hpc­-support@unimelb.edu.au`. 
-* Do not email individual sysadmins; we need consildated records. Please be informative about the error or issue.
+### Part I: SSH Keys, Config, Data Transfers
+* Consider using an `.ssh/config` file and using passwordless SSH by creating a keypair and adding to your `.ssh/authorized_keys` file on Spartan.
+* SSH Keys will make your life easier. Follow the instructions here: `http://www.linuxproblem.org/art_9.html`
+* Both useful for data transfers. c.f., `https://dashboard.hpc.unimelb.edu.au/managing_data/` 
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 2: This is a GNU/Linux CLI World 
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/gnulinux.png" align="center" height="25%" width="25%" vspace="5" hspace="5" />
-* In November 2016 of the Top 500 Supercomputers worldwide, every single machine used a  "UNIX­like" operating system; 99.6% used Linux, 0.4% others.
 -- *Slide End* --
 
 -- *Slide* --
@@ -120,7 +122,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
 
 | Command     | Explanation                                                                |
-|-------------|:--------------------------------------------------------------------------:|
+|:------------|:--------------------------------------------------------------------------:|
 |`whoami`   | "Who Am I?; prints the effective user id.                                  |
 |`pwd`      | "Print working directory";  prints the directory where you're currently in.|
 |`ls`       | "List" directory listing                                                   |	
@@ -128,21 +130,20 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: Command Options
-* Linux commands often come with options expressed as:
-`<command> --<option[s]>`
+* Linux commands often come with options expressed as: `<command> --<option[s]>`
 * Options can be expressed as full words or abbreviated characters.
 
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
-|`ls -lart` | Directory listing with options (long, all, reverse time)                   |
+|`ls -lart`   | Directory listing with options (long, all, reverse time)                   |
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 2: The Online Manual
 * Linux commands come with "man" (manual) pages, which provide a terse description of the meaning and options available to a command. A verbose alternative to man is info. 
 
-| Command     | Explanation                                                              |
-|-------------|:------------------------------------------------------------------------:|
+| Command             | Explanation                                                      |
+|:--------------------|:-----------------------------------------------------------------|
 |`man ls`             | Display the manual entry for the command "ls"                    |
 |`apropos <command>`  | Search for a particular command. Equivalent to "man -k <command>"|
 |`info <command>`     | A verbose description of the command                             |
@@ -153,7 +154,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol.
 
 | Command            | Explanation                                                         |
-|--------------------|:-------------------------------------------------------------------:|
+|:-------------------|:-------------------------------------------------------------------:|
 | <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle.        |
 | <code>ps afux &#124; less</code> | "ps" provides a list of current processes.                          |
 -- *Slide End* --
@@ -163,7 +164,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * To redirect output use the '>' symbol. To redirect input (for example, to feed data to a command) use the '<'. Concatenation is achieved through the use of '>>' symbol. 
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
+|:------------------|:--------------------------------------------------------------------:|
 | `w > list.txt`  | 'w' is a combination of who, uptime and ps -a, redirected            |
 | `w >> list.txt` | Same command, concatenated                                           |
 -- *Slide End* --
@@ -186,7 +187,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * To get a copy of the files from an external source to your home directory, you will probably want to use `wget`, or `git`, or `scp`.
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
+|:------------------|:--------------------------------------------------------------------:|
 | `wget URL`      | Non-interactive download of files over http, https, ftp etc.         |
 | `git clone URL` | Clone a repository into a new directory.                                        |
 -- *Slide End* --
@@ -196,7 +197,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * To copy a file from within a system use the `cp` command. Common options include `-r` to copy and entire directory
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
+|:------------------|:--------------------------------------------------------------------:|
 | `cp source destination`      | Copy a file from source to destination         |
 | `cp -r source destination` | Recursive copy (e.g., a directory) from source to destination                                        |
 | `cp -a source destination` | Recursive copy as archive (with permissions, links)                                        |
@@ -207,7 +208,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 * To copy files to between systems desktop use SCP (secure copy protocol) or SFTP (secure file transfer protocol), combining the ssh and cp functionality. The `cp` options can also be used. The source or destination address should also require a remote shell login.
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
+|:------------------|:--------------------------------------------------------------------:|
 | `scp source.address:/path/ destination.address:/path/`| Copies files on a network |
 -- *Slide End* --
 
@@ -221,7 +222,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 ### Part 2: Synchronising Files and Directories II
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
+|:------------------|:--------------------------------------------------------------------:|
 | `rsync source destination`| General rsync command  |
 | `rsync -avze ssh username@remotemachine:/path/to/source .` | With ssh encryption |
 -- *Slide End* --
@@ -240,8 +241,9 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 * Rsync can be used in a synchronise mode with the --delete flag.  Consider this with the `-n`, or `--dry-run` options first!
 
 | Command           | Explanation                                                          |
-|-------------------|:--------------------------------------------------------------------:|
-| `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise source and destination  |
+|:------------------|:--------------------------------------------------------------------:|
+| `rsync -avz --update source/ username@remotemachine:/path/to/destination| Synchronise source and destination, keep older files  |
+| `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise source and destination absolutely |
 -- *Slide End* --
 
 -- *Slide* --
@@ -306,7 +308,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: Module Commands II
 * There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
-* On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for modules not available for the user to load.
+* On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for all modules and provides a description.
 -- *Slide End* --
 
 -- *Slide* --
@@ -340,64 +342,58 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Job Setup I
+### Part 2: Partitions and Queues
 * Setup and launch consists of writing a short script that initially makes resource requests 
 (walltime, processors, memory, queues) and then commands (loading modules, changing 
 directories, running executables against datasets etc), and optionally checking queueing system.
-* Core command for checking queue `showq` (TORQUE), `squeue` (Slurm)
-* Core command for job submission `qsub [jobscript]` (TORQUE), `sbatch [jobscript]` (Slurm)
+* Core command for checking paritions is `sinfo -s`, or `sinfo -p` for partition and node status.
+* Core command for checking queue `squeue` or `showq` (on Spartan).
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Job Setup II
-* TORQUE jobs must include `cd $PBS_O_WORKDIR` to change to the directory where they were launched. Slurm jobs do not require this. 
-* TORQUE jobs do not parse the user's environment to the compute node by default; the `#$PBS -V` command is required. Slurm does this by default.
+### Part 2: Job Status
+* Core command for job submission `sbatch [jobscript]` 
+* Core command for checking job `squeue -j [jobid]`, detailed command `scontrol show job [jobid]` (SLURM), or all user's jobs `squeue -u [username]`.
+* Core command for deleting job `scancel [jobid]`
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Status and Output
-* Core command for checking job `qstat [jobid]` (TORQUE), `checkjob [jobid]` (Moab), `squeue -j [jobid]` (Slurm), detailed command `scontrol show job [jobid]` (Slurm) 
-* Core command for deleting job `qdel [jobid]` (TORQUE), `scancel [jobid]` (Slurm)
-* Both TORQUE and Slurm provide error and output files (combined into one by default in 
-Slurm). They may also have files for post-job processing. Graphic visualisation is best done on 
-the desktop.
+### Part 3: Single Core Job
+`#!/bin/bash`<br />
+`#SBATCH -­p cloud`<br />
+`#SBATCH ­­--time=01:00:00`<br />
+`#SBATCH ­­--ntasks=1`<br />
+`module load my­app­compiler/version`<br />
+`my­app data`<br />
+* Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 4: Single Core Job
-| TORQUE (Edward)                     | Slurm (Spartan)                                       | 
-|-------------------------------------|------------------------------------------------------:|
-|`#!/bin/bash`                        | `#!/bin/bash`                                         |
-|`#PBS ­-q compute`                    | `#SBATCH -­p cloud`                                    |
-|`#PBS ­-l walltime=01:00:00`          | `#SBATCH ­­--time=01:00:00`                             |
-|`#PBS ­-l nodes=1:ppn=1`              | `#SBATCH ­­--nodes=1`                                   |
-|`cd $PBS_O_WORKDIR`                  | `#SBATCH ­­--ntasks=1`                                  |
-|`module load my­app­compiler/version`  | `module load my­app­compiler/version`                   |
-|`my­app data`                         | `my­app data`                                          |
-
-* Note that Slurm commands have abbreviated or extended versions of resource requests (e.g., `--partition=cloud` or `-p cloud`).
-* Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts.
--- *Slide End* --
-
--- *Slide* --
-### Part 4 : Multicore Jobs
-* Modifying resource allocation requests can improve job efficiency. For TORQUE/Edward use the 
-same script as previously provided but change the resource request as follows: `#PBS ­-l --nodes=1:ppn=2`, or for Slurm/Spartan `#SBATCH --nodes=1 #SBATCH --ntasks-per-node=2`
-* For example shared-memory multithreaded jobs on Slurm/Spartan (e.g., OpenMP), modify the 
---cpus-per-task to a maximum of 16, which is the maximum number of cores on a single instance.
+### Part 3 : Multicore and Multithreaded Jobs
+* In Slurm, `ntasks` means number of tasks, whereas `cpus-per-task` allocates processor cores. In most jobs (serial, MPI) this is 1 by default.
+* With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of 8, which is the maximum number of cores on a single cloud VM (or 12 for physical).<br />
 `#SBATCH ­­--cpus-­per-­task=8`
+* See examples at `/usr/local/common/FSL/`
 -- *Slide End* --
 
 -- *Slide* --
-### Part 4 : Multinode Jobs Spartan
+### Part 3 : Multinode Jobs I
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
 `#!/bin/bash`<br />
-`#SBATCH --­partition physical`<br />
+`#SBATCH -­p physical`<br />
 `#SBATCH ­­--nodes=2`<br />
-`#SBATCH ­­--ntasks=2`<br />
+`#SBATCH ­­--ntasks-per-node=8`<br />
 `module load my­app­compiler/version`<br />
 `srun my­mpi­app`
+-- *Slide End* --
+
+-- *Slide* --
+### Part 3 : Multinode Jobs II
+* Multinodes jobs should be run on the `physical` partition which has the higher interconnect speed.
+* Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
+* This said, multinodes jobs can also request total tasks/cores rather than allocating them per node. e.g., `#SBATCH ­­--ntasks=16`<br />
+* See examples at `/usr/local/common/Python`
 -- *Slide End* --
 
 -- *Slide* --
@@ -451,45 +447,44 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: User Commands
-| User Commad    | TORQUE (Edward)       | Slurm (Spartan)         | 
-|----------------|-----------------------|------------------------:|
-|Job submission  |qsub [script_file]     |sbatch [script_file]     |
-|Job delete      |qdel [job_id]          |scancel [job_id]         |
-|Job status      |qstat [job_id]         |squeue [job_id]          |
-|Job status      |qstat -u [user_name]   |squeue -u [user_name]    |
-|Job pause	 |qhold [job_id]	 |scontrol hold [job_id]   |
-|Job release	 |qrls [job_id]	         |scontrol release [job_id]|
-|Node list       |pbsnodes -a            |sinfo -N                 |
-|Queue list      |qstat -Q               |squeue -s                |
-|Cluster status  |showq                  |sinfo               	   |
+### Part 5: Slurm User Commands
+
+| User Commad    | Slurm Command           | 
+|----------------|------------------------:|
+|Job submission  |sbatch [script_file]     |
+|Job delete      |scancel [job_id]         |
+|Job status      |squeue [job_id]          |
+|Job status      |squeue -u [user_name]    |
+|Node list       |sinfo -N                 |
+|Queue list      |squeue                   |
+|Cluster status  |sinfo               	   |
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: Job Commands
-| Job Specification     | TORQUE (Edward)        | Slurm (Spartan)               | 
-|-----------------------|------------------------|------------------------------:|
-|Script directive       |`#PBS`                  |`#SBATCH`                      |
-|Queue                  |`-q [queue]`            |`-p [queue]` `--partition`     |
-|Job Name               |`-N [name]`             |`--job-name=[name]`            |
-|Nodes                  |`-l nodes=[count]`      |`-N [min[-max]]` `--nodes`     |
-|CPU/Task Count         |`-l ppn=[count]`        |`-n [count]` `--ntasks`        |
-|Wall Clock Limit       |`-l walltime=[hh:mm:ss]`|`-t [days-hh:mm:ss]` `--time`  |
-|Event Address          |`-M [address]`          |`--mail-user=[address]`        |
-|Event Notification     |`-m abe`                |`--mail-type=[events]`         |
-|Memory Size            |`-l mem=[MB]`           |`--mem=[mem][M|G|T]`           |
-|Proc Memory Size       |`-l pmem=[MB]`          |`--mem-per-cpu=[mem][M|G|T]`   |
+### Part 5: Slurm Job Job Commands
+| Job Specification     | Slurm Command              | 
+|-----------------------|---------------------------:|
+|Script directive       |`#SBATCH`                   |
+|Queue                  |`-p [queue]`                |
+|Job Name               |`--job-name=[name]`         |
+|Nodes                  |`-N [min[-max]]`            |
+|CPU Count              |`-n [count]`                |
+|Wall Clock Limit       |`-t [days-hh:mm:ss]`        |
+|Event Address          |`--mail-user=[address]`     |
+|Event Notification     |`--mail-type=[events]`      |
+|Memory Size            |`--mem=[mem][M|G|T]`        |
+|Proc Memory Size       |`--mem-per-cpu=[mem][M|G|T]`|
 -- *Slide End* --
 
 -- *Slide* --
-### Part 5: Environment Commands
-| Environment Command   | TORQUE (Edward)       | Slurm (Spartan)         | 
-|-----------------------|-----------------------|------------------------:|
-|Job ID                 |`$PBS_JOBID`           |`$Slurm_JOBID`           |
-|Submit Directory       |`$PBS_O_WORKDIR`       |`$Slurm_SUBMIT_DIR`      |
-|Submit Host            |`$PBS_O_HOST`          |`$Slurm_SUBMIT_HOST`     |
-|Node List              |`$PBS_NODEFILE`        |`$Slurm_JOB_NODELIST`    |
-|Job Array Index        |`$PBS_ARRAYID`         |`$Slurm_ARRAY_TASK_ID`   |
+### Part 5: Slurm Environment Commands
+| Environment Command   | Slurm (Command)         | 
+|-----------------------|------------------------:|
+|Job ID                 |`$SLURM_JOBID`           |
+|Submit Directory       |`$SLURM_SUBMIT_DIR`      |
+|Submit Host            |`$SLURM_SUBMIT_HOST`     |
+|Node List              |`$SLURM_JOB_NODELIST`    |
+|Job Array Index        |`$SLURM_ARRAY_TASK_ID`   |
 -- *Slide End* --
 
 -- *Slide* --
