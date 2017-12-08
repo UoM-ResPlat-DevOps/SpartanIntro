@@ -494,7 +494,7 @@ dataset10.csv
 | Nodes and Tasks       | Partition             | Time                    | 
 |-----------------------|-----------------------|------------------------:|
 |ntasks=4               | cloud                 |                         |
-|ntaks=8                | cloud         `       |                         |
+|ntaks=8                | cloud                 |                         |
 |nodes=2, ntasks=16     | cloud                 |                         |
 |nodes=2, ntasks=16     | physical              |                         |
 -- *Slide End* --
