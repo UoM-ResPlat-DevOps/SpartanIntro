@@ -123,8 +123,8 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 | Command     | Explanation                                                                |
 |:------------|:--------------------------------------------------------------------------:|
-|`whoami`   | "Who Am I?; prints the effective user id.                                  |
-|`pwd`      | "Print working directory";  prints the directory where you're currently in.|
+|`whoami`   | "Who Am I?; prints the effective user id                                  |
+|`pwd`      | "Print working directory"|
 |`ls`       | "List" directory listing                                                   |	
 -- *Slide End* --
 
@@ -136,6 +136,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
 |`ls -lart`   | Directory listing with options (long, all, reverse time)                   |
+|`ls -lash`   | Directory listing with options (long, all, size in human readable	   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -144,9 +145,10 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 | Command             | Explanation                                                      |
 |:--------------------|:-----------------------------------------------------------------|
-|`man ls`             | Display the manual entry for the command "ls"                    |
+|`man <command`       | Display the manual entry for the command                         |
 |`apropos <command>`  | Search for a particular command. Equivalent to "man -k <command>"|
 |`info <command>`     | A verbose description of the command                             |
+| `whatis <command>`  | A terse description of the command                               |
 -- *Slide End* --
 
 -- *Slide* --
@@ -261,7 +263,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 
 -- *Slide* --
 ### Part 2: Searches and Wildcards
-* To search for files use the find command (e.g., `find . -name '*.txt'`). See also `man find`.
+* To search for files use the find command (e.g., `find . -name '*.txt'`). Compare with `locate` and `whereis`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*`)
 * The most common wildcare is `*`, but there is also `?` (single character).
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
