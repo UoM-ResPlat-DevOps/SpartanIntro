@@ -99,7 +99,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part I: SSH Keys, Config, Data Transfers
 * Consider using an `.ssh/config` file and using passwordless SSH by creating a keypair and adding to your `.ssh/authorized_keys` file on Spartan.
-* SSH Keys will make your life easier. Follow the instructions here: `http://www.linuxproblem.org/art_9.html`
+* SSH Keys will make your life easier. Follow the instructions here: `https://dashboard.hpc.unimelb.edu.au/faq/#how-do-setup-passwordless-ssh-login`
 * Both useful for data transfers. c.f., `https://dashboard.hpc.unimelb.edu.au/managing_data/` 
 -- *Slide End* --
 
