@@ -349,7 +349,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 * Setup and launch consists of writing a short script that initially makes resource requests 
 (walltime, processors, memory, queues) and then commands (loading modules, changing 
 directories, running executables against datasets etc), and optionally checking queueing system.
-* Core command for checking paritions is `sinfo -s`, or `sinfo -p` for partition and node status.
+* Core command for checking paritions is `sinfo -s`, or `sinfo -p` for partition and node status. Major partitions are: `cloud`, `physical`, `gpgpu`. Note also `shortcloud`, `longcloud`, and `shortgpgpu`.
 * Core command for checking queue `squeue` or `showq` (on Spartan).
 -- *Slide End* --
 
