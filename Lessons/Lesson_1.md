@@ -293,7 +293,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 
 -- *Slide* --
 ### Part 3: Environment Modules  Commands
-* The are two implementations of environment modules. The classic modules system is available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
+* The are two implementations of environment modules. The classic modules system was available on the Edward HPC, and the newer Lmod is on Spartan. LMod is considered superior for hierarchies of modules.
 -- *Slide End* --
 
 -- *Slide* --
@@ -311,6 +311,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: Module Commands II
 * There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
+* Lmod modules also support regular expressions, e.g., `module -r avail "^Python"`
 * On Spartan there is also the lmod-specific `module spider <modulename`, which traverses through the system for all modules and provides a description.
 -- *Slide End* --
 
