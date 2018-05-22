@@ -173,7 +173,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: Files and Text Editing I
-* Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is better to use underscores or CamelCase instead of spaces.
+* Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is *much* better to use underscores or CamelCase instead of spaces, newlines etc (including in job names).
 * Linux is case-sensitive with its filenames (e.g., list.txt, LIST.txt lisT.txT are different).
 -- *Slide End* --
 
