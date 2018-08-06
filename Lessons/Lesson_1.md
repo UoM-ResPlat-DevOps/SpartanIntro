@@ -451,6 +451,13 @@ dataset10.csv
 -- *Slide End* --
 
 -- *Slide* --
+### Part 4: Staging
+* Local disk is typically faster than shared disks. If you find that your read-writes are slow and you are making use of a lot of I/O you may need to stage your data.
+* Spartan has `/data` for /home and /projects (large, slower), `/scratch` for temporary storage data (faster), and as local disk, `/var/local/tmp` (fastest, not shared). You may need to copy data between these locations. 
+-- *Slide End* --
+
+
+-- *Slide* --
 ### Part 5: Slurm User Commands
 
 | User Commad    | Slurm Command           | 
