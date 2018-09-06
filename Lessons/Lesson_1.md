@@ -24,7 +24,7 @@
 -- *Slide* --
 ### Part 1: Supercomputers and High Performance Computers etc
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
-* One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge is a broader, more interesting metric.
+* One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge and HPCG are broader, more interesting metrics. 
 * High Performance Computer (HPC) is any computer system whose architecture allows for above average performance. High Throughput Computing (HTC) is an architecture for maximum job completion; capability vs capacity computing.
 -- *Slide End* --
 
@@ -56,16 +56,16 @@
 
 -- *Slide* --
 ### Part 1: King Edward Is No More!
-* Since 2011 UniMelb's general cluster was been Edward (previous system was Alfred).
-* A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011.
-* Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
+* Since 2011 UniMelb's general cluster was been Edward (previous system was Alfred). 
+* New system is Spartan (not Æthelstan or Ælfweard)
+* A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011. Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 1: What's Different About Spartan?
-* New system is Spartan (not Æthelstan or Ælfweard)
 * Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
 * Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
+* Other institutions (e.g., University of Freibug) do "Cloud on HPC". 
 -- *Slide End* --
 
 -- *Slide* --
@@ -75,10 +75,10 @@
 
 -- *Slide* --
 ### Part 1: Spartan Hardware
-* Physical partition is c276 cores, 21 GB per core,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 192GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
-* Cloud partitions is almost 400 virtual machines with over 3,000 cores, dual CPU E5-2683 v4 2.1GHz, 10GBe Cisco Nexus. 
-* There is also a GPU partition (Dual Nvidia Tesla K80, *very* big expansion this year), and departmental partitions (water and ashley).
-* Storage: 8TB `/scratch` NFS over RDMA, `/project` and `/home` NFS, 65TB.
+* Physical partition is 21 nodes, c372 cores, 21 GB per core,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 192GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
+* Cloud partitions is 210 virtual machines with over 1,600 cores, dual CPU E5-2683 v4 2.1GHz, 10GBe Cisco Nexus. 
+* GPGPU partition for LIEF grant recipients, c1400 cores, p100 cards.
+* Storage: 4.3PB `/scratch` NFS over RDMA, `/project` and `/home`.
 -- *Slide End* --
 
 -- *Slide* --
