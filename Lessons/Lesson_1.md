@@ -306,6 +306,8 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 
 -- *Slide* --
 ### Part 3: Module Commands I
+| Command                         | Explanation                                            |
+|---------------------------------|:------------------------------------------------------:|
 | `module load <modulefile>`    | Loads paths etc to user's environment                  |
 | `module unload <modulefile>`  | Unloads paths etc from user's environment.             |
 | `module list`                 | lists all the modules currently loaded.                |
@@ -414,7 +416,7 @@ invoked and the resource requests altered e.g.,
 
 -- *Slide* --
 ### Part 3 : Job Script Generator
-<img src="http://levlafayette.com/files/cat-asleep-on-keyboard.jpg" width="100%" height="100%" title="Lazy cat" />
+<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/cat-asleep-on-keyboard.jpg" width="100%" height="100%" title="Lazy cat" />
 `https://dashboard.hpc.unimelb.edu.au/guides/script_generator/`
 -- *Slide End* --
 
