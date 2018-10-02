@@ -77,7 +77,7 @@
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 1: Parallel Computing
-* With a cluster architecture, applications can be more easily parallelised across them. *Data parallel*, running same task in parallel; the horse and cart example, Monte Carlo experiments. *Task parallel*, running indeopendent tasks in parallel with communication; driving a car, molecullar modelling.
+* With a cluster architecture, applications can be more easily parallelised across them. *Data parallel*, running same task in parallel; the horse and cart example, Monte Carlo experiments. *Task parallel*, running independent tasks in parallel with communication; driving a car, molecullar modelling.
 * Further examples of serial versus parallel; weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
 </script></section>
 <section data-markdown><script type="text/template">
@@ -398,6 +398,11 @@ invoked and the resource requests altered e.g.,
 * Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
 * This said, multinodes jobs can also request total tasks/cores rather than allocating them per node. e.g., `#SBATCH ­­--ntasks=16`<br />
 * See examples at `/usr/local/common/Python`
+</script></section>
+<section data-markdown><script type="text/template">
+### Part 3 : Job Script Generator
+<img src="http://levlafayette.com/files/cat-asleep-on-keyboard.jpg" width="100%" height="100%" title="Lazy cat" />
+`https://dashboard.hpc.unimelb.edu.au/guides/script_generator/`
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 4 : Job/Batch Arrays
