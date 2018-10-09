@@ -417,7 +417,7 @@ invoked and the resource requests altered e.g.,
 -- *Slide* --
 ### Part 3 : Job Script Generator
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/cat-asleep-on-keyboard.jpg" width="100%" height="100%" title="Lazy cat" />
-`https://dashboard.hpc.unimelb.edu.au/guides/script_generator/`
+` https://dashboard.hpc.unimelb.edu.au/guides/script_generator/ `
 -- *Slide End* --
 
 -- *Slide* --
