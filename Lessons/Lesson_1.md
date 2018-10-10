@@ -105,6 +105,14 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide End* --
 
 -- *Slide* --
+### Part I: Latency, Bandwidth, Data Location
+* Latency is the speed of data transfer, bandwidth is the "width" of the "band" of data transfer.
+* Using a road analogy, "latency" is the smoothness of the surface, "bandwith" is the number of lanes.
+* Distance is a *very* important factor. Data for processing should be kept as close as possible to the processor.
+* As Grace Hopper used to say: "Mind your nanoseconds!" https://www.youtube.com/watch?v=JEpsKnWZrJ8
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 2: This is a GNU/Linux CLI World 
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/gnulinux.png" align="center" height="25%" width="25%" vspace="5" hspace="5" />
 -- *Slide End* --
@@ -158,7 +166,7 @@ Linux also have very useful 'pipes' and redirect commands. To pipe one command t
 | Command            | Explanation                                                         |
 |:-------------------|:-------------------------------------------------------------------:|
 | <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle.        |
-| <code>ps afux &#124; less</code> | "ps" provides a list of current processes.                          |
+| <code>ps afux &#124; less</code> | "ps" provides a list of current processes. Check `man ps`           |
 -- *Slide End* --
 
 -- *Slide* --
