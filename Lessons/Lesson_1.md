@@ -66,7 +66,7 @@ Image originally from the VPAC
 ### Part 1: What's Different About Spartan?
 * Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
 * Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
-* Other institutions (e.g., University of Freibug) do "Cloud on HPC". 
+* Other institutions (e.g., University of Freiburg) do "Cloud on HPC". 
 -- *Slide End* --
 
 -- *Slide* --
