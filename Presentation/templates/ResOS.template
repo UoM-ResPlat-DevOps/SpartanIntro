@@ -3,18 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-
-    <title>NeCTAR Cloud Lessons</title>
-
+    <title>Introduction to Linux and HPC</title>
     <meta name="description" content="Slides for the ResBaz introductory course on the NeCTAR cloud.">
-    <meta name="author" content="Martin Paulo">
-
+    <meta name="author" content="Lev Lafayette">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
     <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
 
@@ -52,7 +47,6 @@
 <script src="reveal.js/js/reveal.js"></script>
 
 <script>
-
     // Full list of configuration options available at:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
