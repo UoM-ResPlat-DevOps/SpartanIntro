@@ -386,12 +386,15 @@ directories, running executables against datasets etc), and optionally checking 
 
 -- *Slide* --
 ### Part 3: Single Core Job
-`#!/bin/bash`<br />
-`#SBATCH -­p cloud`<br />
-`#SBATCH ­­--time=01:00:00`<br />
-`#SBATCH ­­--ntasks=1`<br />
-`module load my­app­compiler/version`<br />
-`my­app data`<br />
+```bash
+#!/bin/bash
+#SBATCH -­p cloud
+#SBATCH ­­--time=01:00:00
+#SBATCH ­­--ntasks=1
+module load my­app­compiler/version
+my­app data
+```
+
 * Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
 -- *Slide End* --
 
