@@ -460,15 +460,17 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 4 : Multiple Job Steps II
-`#!/bin/bash`<br />
-`#SBATCH --­partition physical`<br />
-`#SBATCH ­­--nodes=2`<br />
-`#SBATCH ­­--ntasks=12`<br />
-`#SBATCH --time=24:00:00`<br />
-`srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app`<br />
-`export OMP_NUM_THREADS=6`<br />
-`srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp`<br />
-`srun -N 1 -n 1 -t 06:00:00 ./myserialapp`<br />
+```bash
+#!/bin/bash
+#SBATCH --­partition physical
+#SBATCH ­­--nodes=2
+#SBATCH ­­--ntasks=12
+#SBATCH --time=24:00:00
+srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app
+export OMP_NUM_THREADS=6
+srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp
+srun -N 1 -n 1 -t 06:00:00 ./myserialapp
+```
 -- *Slide End* --
 
 -- *Slide* --
