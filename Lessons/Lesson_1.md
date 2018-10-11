@@ -204,7 +204,7 @@ To get a copy of the files from an external source to your home directory, you w
 
 -- *Slide* --
 ### Part 2: Copying Files Within a Local Systems 
-To copy a file from within a system use the `cp` command. Common options include `-r` to copy and entire directory
+To copy a file from within a system use the `cp` command. Common options include `-r` to copy an entire directory
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
