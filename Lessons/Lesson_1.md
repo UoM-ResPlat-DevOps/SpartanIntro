@@ -382,6 +382,7 @@ directories, running executables against datasets etc), and optionally checking 
 * Core command for job submission `sbatch [jobscript]` 
 * Core command for checking job `squeue -j [jobid]`, detailed command `scontrol show job [jobid]` (SLURM), or all user's jobs `squeue -u [username]`.
 * Core command for deleting job `scancel [jobid]`
+* Basic resource usage `sacct -j [jobid] --format=JobID,JobName,MaxRSS,Elapsed` (or `-u [username]`
 -- *Slide End* --
 
 -- *Slide* --

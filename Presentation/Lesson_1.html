@@ -99,7 +99,7 @@ Image originally from the VPAC
 ### Part 1: What's Different About Spartan?
 * Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
 * Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
-* Other institutions (e.g., University of Freibug) do "Cloud on HPC". 
+* Other institutions (e.g., University of Freiburg) do "Cloud on HPC". 
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 1: Spartan Design
@@ -220,7 +220,7 @@ To get a copy of the files from an external source to your home directory, you w
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 2: Copying Files Within a Local Systems 
-To copy a file from within a system use the `cp` command. Common options include `-r` to copy and entire directory
+To copy a file from within a system use the `cp` command. Common options include `-r` to copy an entire directory
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
@@ -276,7 +276,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 ### Part 2: Searches and Wildcards
 * To search for files use the find command (e.g., `find . -name '*.txt'`). Compare with `locate` and `whereis`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*`)
-* The most common wildcare is `*`, but there is also `?` (single character).
+* The most common wildcard is `*`, but there is also `?` (single character).
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
 </script></section>
 <section data-markdown><script type="text/template">
@@ -327,7 +327,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 <section data-markdown><script type="text/template">
 ### Part 3: Portable Batch System I
 * The Portable Batch System (or simply PBS) is a utility software that performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources.
-* Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro. TORQUE is used on the Edward HPC system.
+* Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro. TORQUE was used on the Edward HPC system.
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 3: Portable Batch System II
@@ -369,15 +369,19 @@ directories, running executables against datasets etc), and optionally checking 
 * Core command for job submission `sbatch [jobscript]` 
 * Core command for checking job `squeue -j [jobid]`, detailed command `scontrol show job [jobid]` (SLURM), or all user's jobs `squeue -u [username]`.
 * Core command for deleting job `scancel [jobid]`
+* Basic resource usage `sacct -j [jobid] --format=JobID,JobName,MaxRSS,Elapsed` (or `-u [username]`
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 3: Single Core Job
-`#!/bin/bash`<br />
-`#SBATCH -­p cloud`<br />
-`#SBATCH ­­--time=01:00:00`<br />
-`#SBATCH ­­--ntasks=1`<br />
-`module load my­app­compiler/version`<br />
-`my­app data`<br />
+```bash
+#!/bin/bash
+#SBATCH -­p cloud
+#SBATCH ­­--time=01:00:00
+#SBATCH ­­--ntasks=1
+module load my­app­compiler/version
+my­app data
+```
+
 * Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
 </script></section>
 <section data-markdown><script type="text/template">
@@ -437,15 +441,17 @@ dataset10.csv
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 4 : Multiple Job Steps II
-`#!/bin/bash`<br />
-`#SBATCH --­partition physical`<br />
-`#SBATCH ­­--nodes=2`<br />
-`#SBATCH ­­--ntasks=12`<br />
-`#SBATCH --time=24:00:00`<br />
-`srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app`<br />
-`export OMP_NUM_THREADS=6`<br />
-`srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp`<br />
-`srun -N 1 -n 1 -t 06:00:00 ./myserialapp`<br />
+```bash
+#!/bin/bash
+#SBATCH --­partition physical
+#SBATCH ­­--nodes=2
+#SBATCH ­­--ntasks=12
+#SBATCH --time=24:00:00
+srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app
+export OMP_NUM_THREADS=6
+srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp
+srun -N 1 -n 1 -t 06:00:00 ./myserialapp
+```
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 4: Backfilling
