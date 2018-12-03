@@ -252,8 +252,8 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
-| `rsync -avz --update source/ username@remotemachine:/path/to/destination| Synchronise source and destination, keep older files  |
-| `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise source and destination absolutely |
+| `rsync -avz --update source/ username@remotemachine:/path/to/destination| Synchronise, keep older files  |
+| `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise, absolutely |
 -- *Slide End* --
 
 -- *Slide* --
