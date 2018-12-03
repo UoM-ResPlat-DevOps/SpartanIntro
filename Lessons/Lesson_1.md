@@ -57,8 +57,7 @@ Image originally from the VPAC
 
 -- *Slide* --
 ### Part 1: King Edward Is No More!
-* Since 2011 UniMelb's general cluster was been Edward (previous system was Alfred). 
-* New system is Spartan (not Æthelstan or Ælfweard)
+* Since 2011 UniMelb's general cluster was Edward (previous system was Alfred); new system is Spartan (not Æthelstan or Ælfweard)
 * A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011. Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
 -- *Slide End* --
 
@@ -189,7 +188,7 @@ To redirect output use the '>' symbol. To redirect input (for example, to feed d
 ### Part 2: Files and Text Editing II
 * Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). 
 * The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file.
-* There are three text editors usually available on Linux systems on the command-line. The first is `nano`; easy to use, limited functionality. The others (both from 1976) are `vi` (or `vim`), which is terse but powerful, or `emacs` (Editor Macros) editor and environment is a feature-rich application,
+* There are three text editors usually available on Linux systems on the command-line. These are `nano` (1989, as `pico`) and `vim` (or `vi`), and or `emacs` (both 1976).
 -- *Slide End* --
 
 -- *Slide* --
