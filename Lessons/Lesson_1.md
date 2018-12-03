@@ -223,8 +223,8 @@ To copy files to between systems desktop use SCP (secure copy protocol) or SFTP 
 
 -- *Slide* --
 ### Part 2: Synchronising Files and Directories I
-The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes.    
-The source or destination address should also require a remote shell login.    
+* The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes.    
+* The source or destination address should also require a remote shell login.    
 For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles .`
 -- *Slide End* --
 
@@ -526,6 +526,8 @@ srun -N 1 -n 1 -t 06:00:00 ./myserialapp
 
 -- *Slide* --
 ### Part 5: Slurm Job Commands II
+| Job Specification     | Slurm Command              | 
+|-----------------------|---------------------------:|
 |Event Address          |`--mail-user=[address]`     |
 |Event Notification     |`--mail-type=[events]`      |
 |Memory Size            |`--mem=[mem][M|G|T]`        |
