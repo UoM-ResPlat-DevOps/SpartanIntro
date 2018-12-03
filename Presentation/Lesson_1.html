@@ -237,7 +237,8 @@ To copy files to between systems desktop use SCP (secure copy protocol) or SFTP 
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 2: Synchronising Files and Directories I
-The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes. The source or destination address should also require a remote shell login. 
+The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes.    
+The source or destination address should also require a remote shell login.    
 For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles .`
 </script></section>
 <section data-markdown><script type="text/template">
