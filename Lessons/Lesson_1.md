@@ -197,8 +197,8 @@ To get a copy of the files from an external source to your home directory, you w
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
-| `wget URL`      | Non-interactive download of files over http, https, ftp etc.         |
-| `git clone URL` | Clone a repository into a new directory.                                        |
+| `wget URL`      | Non-interactive download of files over http, https, ftp etc.           |
+| `git clone URL` | Clone a repository into a new directory.                               |
 -- *Slide End* --
 
 -- *Slide* --
@@ -207,9 +207,9 @@ To copy a file from within a system use the `cp` command. Common options include
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
-| `cp source destination`      | Copy a file from source to destination         |
-| `cp -r source destination` | Recursive copy (e.g., a directory) from source to destination                                        |
-| `cp -a source destination` | Recursive copy as archive (with permissions, links)                                        |
+| `cp source destination`      | Copy a file from source to destination                    |
+| `cp -r source destination` | Recursive copy (e.g., a directory)		           |
+| `cp -a source destination` | Recursive copy as archive (permissions, links)		   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -218,7 +218,7 @@ To copy files to between systems desktop use SCP (secure copy protocol) or SFTP 
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
-| `scp source.address:/path/ destination.address:/path/`| Copies files on a network |
+| `scp source.address:/path/ destination.address:/path/`| Copies files on a network        |
 -- *Slide End* --
 
 -- *Slide* --
