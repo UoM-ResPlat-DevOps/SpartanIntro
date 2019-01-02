@@ -282,7 +282,8 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 * Files can be deleted with the `rm` command (e.g., `rm gattaca.txt`)
 * Empty directories can be deleted with the `rmdir` command (e.g., `rmdir braf`)
 * Directories, files, subdirectories etc can be delted with `rm -rf <<dir>>`
-* BE VERY CAREFUL!
+* BE VERY CAREFUL, ESPECIALLY WITH WILDCARDS!
+* Consider the difference between `rm matlab *` to `rm matlab*`.
 -- *Slide End* --
 
 -- *Slide* --
