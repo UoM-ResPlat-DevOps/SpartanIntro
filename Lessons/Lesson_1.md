@@ -264,9 +264,10 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 
 -- *Slide* --
 ### Part 2: File Differences
-* File differences can be determined by timestamp (e.g., `ls -l gattaca.txt braf/gattaca2.txt`)
+* File differences can be determined by timestamp (e.g., `ls -l gattaca.txt braf/gattaca.txt`)
 * Content differences can be determined by the `diff` command (e.g., `diff gattaca.txt braf/gattaca.txt`)
 * For a side-by-side representation use the command `sdiff` instead.
+* The command `comm` can compare two files, lines by line (e.g., `comm gattaca.txt braf/gattaca.txt`).
 -- *Slide End* --
 
 -- *Slide* --
@@ -375,7 +376,7 @@ From the IBM 'Red Book' on Job Submission.
 * Setup and launch consists of writing a short script that initially makes resource requests 
 (walltime, processors, memory, queues) and then commands (loading modules, changing 
 directories, running executables against datasets etc), and optionally checking queueing system.
-* Core command for checking paritions is `sinfo -s`, or `sinfo -p` for partition and node status. Major partitions are: `cloud`, `physical`, `gpgpu`. Note also `longcloud`, and `shortgpgpu`.
+* Core command for checking paritions is `sinfo -s`, or `sinfo -p $partition` for partition and node status. Major partitions are: `cloud`, `physical`, `gpgpu`. Note also `longcloud`, and `shortgpgpu`.
 * Core command for checking queue `squeue` or `showq` (on Spartan).
 -- *Slide End* --
 
