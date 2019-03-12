@@ -82,10 +82,10 @@ Image originally from the VPAC
 -- *Slide End* --
 
 -- *Slide* --
-### Part I: Logging In
+### Part I: Accounts and Projects
 * Spartan uses its an authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
 * Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
-* Projects have their own project directory for files.
+* Projects have their own project directory for files (500GB default).
 -- *Slide End* --
 
 -- *Slide* --
