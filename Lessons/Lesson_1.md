@@ -404,7 +404,7 @@ module load my­app­compiler/version
 my­app data
 ```
 
-* Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
+* Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`, `/usr/local/OpenFOAM`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
 -- *Slide End* --
 
 -- *Slide* --
