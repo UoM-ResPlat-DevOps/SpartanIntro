@@ -410,7 +410,7 @@ my­app data
 -- *Slide* --
 ### Part 3 : Multicore and Multithreaded Jobs
 * In Slurm, `ntasks` means number of tasks, whereas `cpus-per-task` allocates processor cores. In most jobs (serial, MPI) this is 1 by default.
-* With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of 8, which is the maximum number of cores on a single cloud VM (or 12 for physical).<br />
+* With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of 12, which is the maximum number of cores on a single cloud VM (or 12 for physical).<br />
 `#SBATCH ­­--cpus-­per-­task=8`
 * See examples at `/usr/local/common/FSL/`
 -- *Slide End* --
