@@ -125,10 +125,14 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Exploring The Environment
+### Part 2: File System Hierarchy
 * When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). Explore file system hierarchy. Project directory in `/data/projects/<<projectID>>`.
 * "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
+* See `https://swcarpentry.github.io/shell-novice/fig/standard-filesystem-hierarchy.svg`
+-- *Slide End* --
 
+-- *Slide* --
+### Part 2: Exploring The Environment
 | Command     | Explanation                                                                |
 |:------------|:--------------------------------------------------------------------------:|
 |`whoami`   | "Who Am I?; prints the effective user id                                  |
