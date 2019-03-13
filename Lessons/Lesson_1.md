@@ -504,7 +504,6 @@ srun -N 1 -n 1 -t 06:00:00 ./myserialapp
 * Spartan has `/data` for /home and /projects (large, slower), `/scratch` for temporary storage data (faster), and as local disk, `/var/local/tmp` (fastest, not shared). You may need to copy data between these locations. 
 -- *Slide End* --
 
-
 -- *Slide* --
 ### Part 5: Slurm User Commands
 
