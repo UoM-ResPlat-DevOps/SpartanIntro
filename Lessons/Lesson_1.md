@@ -56,8 +56,8 @@ Image originally from the VPAC
 -- *Slide End* --
 
 -- *Slide* --
-### Part 1: King Edward Is No More!
-* Since 2011 UniMelb's general cluster was Edward (previous system was Alfred); new system is Spartan (not Æthelstan or Ælfweard)
+### Part 1: Valedictions King Edward
+* From 2011-2015 UniMelb's general cluster was Edward (previous system was Alfred); new system is Spartan (not Æthelstan or Ælfweard)
 * A review was conducted looking at the infrastructure and metrics of Edward, the University's general HPC system since 2011. Edward's usage statistics show that single-core and low memory jobs dominate; 76.35% of jobs from Feb 9 2015 to Feb 9 2016 were single core, and 96.83% used 1-4GB of memory.
 -- *Slide End* --
 
@@ -77,7 +77,7 @@ Image originally from the VPAC
 ### Part 1: Spartan Hardware
 * Physical partition 1 is 19 nodes, 228 cores, 21 GB per core,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 254GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
 * Cloud partition is 165 virtual machines with over 1,980 cores, dual CPU Intel(R) Xeon(R) Gold 6138 CPU, 2.00GHz, 10GBe Cisco Nexus. 
-* GPU partition for LIEF grant recipients, 1,752 core, 4 P100 Nvidia GPUs per node
+* GPU partition for LIEF grant recipients, 1,752 core, 4 P100 Nvidia GPUs per node (3584 CUDA Cores)
 * Storage: 4.3PB `/scratch` NFS over RDMA, `/project` and `/home`.
 -- *Slide End* --
 
@@ -410,7 +410,7 @@ my­app data
 -- *Slide* --
 ### Part 3 : Multicore and Multithreaded Jobs
 * In Slurm, `ntasks` means number of tasks, whereas `cpus-per-task` allocates processor cores. In most jobs (serial, MPI) this is 1 by default.
-* With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of 12, which is the maximum number of cores on a single cloud VM (or 12 for physical).<br />
+* With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of the cores in the node.<br />
 `#SBATCH ­­--cpus-­per-­task=8`
 * See examples at `/usr/local/common/FSL/`
 -- *Slide End* --
