@@ -42,6 +42,10 @@
 -- *Slide End* --
 
 -- *Slide* --
+<img src="<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/smartparallel.jpg" />
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 1: HPC Cluster and Parallel Processing Components
 * A chassis or rack, containing multiple computer system units, interconnect, and providing power.
 * Computer system units or nodes, containing memory, local disk, and sockets.
