@@ -4,7 +4,7 @@
 * Part 2: Logging on an exploring the Linux Environment.
 * Part 3: Learning about Environment Modules and the Slurm job submission system.
 * Part 4: Submitting test jobs.
-* Part 5: TORQUE/Moab and Slurm Command Summaries
+* Part 5: Slurm Command Summaries and Peformance Test
 -- *Slide End* --
 
 -- *Slide* --
@@ -12,14 +12,14 @@
 * A copy of these slides and sample code is available at: `https://github.com/UoM-ResPlat-DevOps/SpartanIntro`
 * A copy of information about HPC at the University of Melbourne is available at `https://dashboard.hpc.unimelb.edu.au`. See also `man spartan` on the cluster and the `/usr/local/common/` directories for more help and code exammples.
 * Help is available at: `hpc-support@unimelb.edu.au`. Other courses also conducted by Research Platforms.
-* Terminal projection via https://shellshare.net/
+* Terminal projection via https://shellshare.net/r/Spartan
 -- *Slide End* --
 
 -- *Slide* --
 ### Part I: Helpdesk
 * Read the Message of the Day when you login!
 * If a user has problems with submitting a job, or needs a new application or extension to an existing application installed, or if their submissions are generated unexpected errors etc., an email can be sent to the helpdesk: `hpc­-support@unimelb.edu.au`. 
-* Do not email individual sysadmins; we need consolidated records. Please be informative about the error or issue.  Don't try to use sudo!
+* Do not email individual sysadmins; we need consolidated records. Please be informative about the error or issue. Separate tickst for separate issues; Don't try to use sudo!
 -- *Slide End* --
 
 -- *Slide* --
@@ -75,7 +75,7 @@ Image originally from the VPAC
 
 -- *Slide* --
 ### Part 1: Spartan Hardware
-* Physical partition 1 is 19 nodes, 228 cores, 21 GB per core,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 254GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
+* Physical partition 37 nodes, 1,284 cores,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 254GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
 * Cloud partition is 165 virtual machines with over 1,980 cores, dual CPU Intel(R) Xeon(R) Gold 6138 CPU, 2.00GHz, 10GBe Cisco Nexus. 
 * GPU partition for LIEF grant recipients, 1,752 core, 4 P100 Nvidia GPUs per node (3584 CUDA Cores)
 * Storage: 4.3PB `/scratch` NFS over RDMA, `/project` and `/home`.
@@ -86,7 +86,7 @@ Image originally from the VPAC
 * Spartan uses its an authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
 * Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
 * Select Department from this list: `https://gitlab.unimelb.edu.au/resplat-cloud/uom-cloud-dashboard/blob/uom/queens/nectar_dashboard/rcallocation/choices_dept.py`
-* Projects have their own project directory for files (500GB default).
+* Projects have their own project directory for files (500GB default, can be increased to 1TB or 10TB with approval).
 -- *Slide End* --
 
 -- *Slide* --
