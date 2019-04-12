@@ -283,7 +283,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 ### Part 2: Searches and Wildcards
 * To search for files use the find command (e.g., `find . -name '*.txt'`). Compare with `locate` and `whereis`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*` or `grep -l`)
-* The most common wildcard is `*`, but there is also `?` (single character).
+* The most common wildcard is `*`, but there is also `?` (single character). Expansion is 'globbing'.
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
 -- *Slide End* --
 
