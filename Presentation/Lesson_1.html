@@ -274,6 +274,13 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 | `rsync -avz --delete source/ username@remotemachine:/path/to/destination| Synchronise, absolutely |
 </script></section>
 <section data-markdown><script type="text/template">
+### Part 2: Creating Directories, Moving Files
+* Directories can be created with the `mkdir` command (e.g., `mkdir braf`).
+* Files can be copied with the `cp` command (e.g., `cp gattaca.txt gattaca2.txt`)
+* Files can be moved with the `mv` command (e.g., `mv gattaca2.txt braf`)
+
+</script></section>
+<section data-markdown><script type="text/template">
 ### Part 2: File Differences
 * File differences can be determined by timestamp (e.g., `ls -l gattaca.txt braf/gattaca.txt`)
 * Content differences can be determined by the `diff` command (e.g., `diff gattaca.txt braf/gattaca.txt`)
@@ -284,7 +291,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 ### Part 2: Searches and Wildcards
 * To search for files use the find command (e.g., `find . -name '*.txt'`). Compare with `locate` and `whereis`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*` or `grep -l`)
-* The most common wildcard is `*`, but there is also `?` (single character).
+* The most common wildcard is `*`, but there is also `?` (single character). Expansion is 'globbing'.
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
 </script></section>
 <section data-markdown><script type="text/template">
