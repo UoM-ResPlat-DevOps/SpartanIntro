@@ -12,14 +12,13 @@
 * A copy of these slides and sample code is available at: `https://github.com/UoM-ResPlat-DevOps/SpartanIntro`
 * A copy of information about HPC at the University of Melbourne is available at `https://dashboard.hpc.unimelb.edu.au`. See also `man spartan` on the cluster and the `/usr/local/common/` directories for more help and code exammples.
 * Help is available at: `hpc-support@unimelb.edu.au`. Other courses also conducted by Research Platforms.
-* Terminal projection via https://shellshare.net/r/Spartan
 -- *Slide End* --
 
 -- *Slide* --
 ### Part I: Helpdesk
 * Read the Message of the Day when you login!
 * If a user has problems with submitting a job, or needs a new application or extension to an existing application installed, or if their submissions are generated unexpected errors etc., an email can be sent to the helpdesk: `hpc­-support@unimelb.edu.au`. 
-* Do not email individual sysadmins; we need consolidated records. Please be informative about the error or issue. Separate tickst for separate issues; Don't try to use sudo!
+* Do not email individual sysadmins; we need consolidated records. Please be informative about the error or issue. Separate tickst for separate issues. Don't try to use sudo!
 -- *Slide End* --
 
 -- *Slide* --
@@ -32,17 +31,17 @@
 -- *Slide* --
 ### Part 1: Clusters and Research Computing
 * Clustered computing is when two or more computers serve a single resource. This improves performance and provides redundancy in case of failure system. Typically commodity systems with a high-speed local network.
-* Research computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever researchers use and do. Not issues of producibility and environments.
+* Research computing is the software applications used by the scientific community to aid research. Does not necessarily equate with high performance computing, or the use of clusters.­ It is whatever researchers use and do. Note issues of reproducibility and environments.
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 1: Parallel Computing
-* With a cluster architecture, applications can be more easily parallelised across them. *Data parallel*, running same task in parallel; the horse and cart example, Monte Carlo experiments. *Task parallel*, running independent tasks in parallel with communication; driving a car, molecullar modelling.
+* With a cluster architecture, applications can be more easily parallelised across them. *Data parallel*, running same task in parallel; the horse and cart example, Monte Carlo experiments. *Task parallel*, running independent tasks in parallel with communication; driving a car, molecular modelling.
 * Further examples of serial versus parallel; weather forecasting, aerodynamic design, fluid mechanics, radiation modelling, molecullar dynamics, CGI rendering for popular movies, etc. Reality is a parallel system!
 -- *Slide End* --
 
 -- *Slide* --
-<img src="<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/smartparallel.jpg" />
+<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/smartparallel.jpg" height="200%" width="200%" />
 -- *Slide End* --
 
 -- *Slide* --
@@ -89,6 +88,10 @@ Image originally from the VPAC
 ### Part I: Accounts and Projects
 * Spartan uses its an authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
 * Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
+-- *Slide End* --
+
+-- *Slide* --
+### Part I: Accounts and Projects
 * Select Department from this list: `https://gitlab.unimelb.edu.au/resplat-cloud/uom-cloud-dashboard/blob/uom/queens/nectar_dashboard/rcallocation/choices_dept.py`
 * Projects have their own project directory for files (500GB default, can be increased to 1TB or 10TB with approval).
 -- *Slide End* --
@@ -104,7 +107,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide* --
 ### Part I: SSH Keys, Config, Data Transfers
 * Consider using an `.ssh/config` file and using passwordless SSH by creating a keypair and adding to your `.ssh/authorized_keys` file on Spartan.
-* SSH Keys will make your life easier. Follow the instructions here: `https://dashboard.hpc.unimelb.edu.au/faq/#how-do-setup-passwordless-ssh-login`
+* SSH Keys will make your life easier. Follow the instructions here: `https://dashboard.hpc.unimelb.edu.au/faq/`
 * Both useful for data transfers. c.f., `https://dashboard.hpc.unimelb.edu.au/managing_data/` 
 -- *Slide End* --
 
@@ -122,7 +125,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: This is a GNU/Linux World CLI II
+### Part 2: This is a GNU/Linux CLI World
 * The command­line interface provides a great deal more power and is very resource efficient. 
 * GNU/Linux scales and does so with stability and efficiency.
 * Critical software such as the Message Parsing Interface (MPI) and nearly all scientific programs are designed to work with GNU/Linux. 
@@ -131,9 +134,9 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 
 -- *Slide* --
 ### Part 2: File System Hierarchy
-* When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). Explore file system hierarchy. Project directory in `/data/projects/<<projectID>>`.
-* "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
+* When a user logs in on a Linux or other UNIX-like system on the command line, they start in their home directory (`/home/<<username>>`). Project directory in `/data/projects/<<projectID>>`.
 * See `https://swcarpentry.github.io/shell-novice/fig/standard-filesystem-hierarchy.svg`
+* "Everything in the UNIX system is a file" (Kernighan & Pike, 1984, 41). 
 -- *Slide End* --
 
 -- *Slide* --
@@ -162,9 +165,9 @@ Linux commands come with "man" (manual) pages, which provide a terse description
 
 | Command             | Explanation                                                      |
 |:--------------------|:-----------------------------------------------------------------|
-|`man <command`       | Display the manual entry for the command                         |
+|`man <command>`       | Display the manual entry for the command                         |
 |`info <command>`     | A verbose description of the command                             |
-| `whatis <command>`  | A terse description of the command                               |
+|`whatis <command>`  | A terse description of the command                               |
 -- *Slide End* --
 
 -- *Slide* --
@@ -174,7 +177,8 @@ Linux also have very useful 'pipes' and redirect commands. To pipe one command t
 | Command            | Explanation                                                         |
 |:-------------------|:-------------------------------------------------------------------:|
 | <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle.        |
-| <code>ps afux &#124; less</code> | "ps" provides a list of current processes. Check `man ps`           |
+| <code>who &#124; wc -l</code> | "Who" piped through wordcount command, count lines.        |
+| <code>ps -afux &#124; less</code> | "ps" provides a list of current processes. Check `man ps`           |
 -- *Slide End* --
 
 -- *Slide* --
@@ -188,13 +192,13 @@ To redirect output use the '>' symbol. To redirect input (for example, to feed d
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Files and Text Editing I
+### Part 2: Files and Text Editing
 * Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is *much* better to use underscores or CamelCase instead of spaces, newlines etc (including in job names).
 * Linux is case-sensitive with its filenames (e.g., list.txt, LIST.txt lisT.txT are different).
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Files and Text Editing II
+### Part 2: Files and Text Editing
 * Files do not usually require a program association suffix, although you may find this convenient (a C compiler like files to have .c in their suffix, for example). 
 * The type of file can be determined with the `file` command. The type returned will usually be text, executable binaries, archives, or a catch-all "data" file.
 * There are three text editors usually available on Linux systems on the command-line. These are `nano` (1989, as `pico`) and `vim` (or `vi`), and or `emacs` (both 1976). See `https://www.vimgolf.com/`
@@ -231,14 +235,14 @@ To copy files to between systems desktop use SCP (secure copy protocol) or SFTP 
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Synchronising Files and Directories I
+### Part 2: Synchronising Files and Directories
 * The `rsync` utility provides a fast way to keep two collections of files "in sync" by tracking changes.    
 * The source or destination address should also require a remote shell login.    
 For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles .`
 -- *Slide End* --
 
 -- *Slide* --
-### Part 2: Synchronising Files and Directories II
+### Part 2: Synchronising Files and Directories
 
 | Command           | Explanation                                                          |
 |:------------------|:--------------------------------------------------------------------:|
@@ -247,8 +251,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 -- *Slide End* --
 
 -- *Slide* --
-
-### Part 2: Synchronising Files and Directories III
+### Part 2: Synchronising Files and Directories
 * The `rsync -avz` command ensures that it is in archive mode (recursive, copies symlinks, preserves permissions), is verbose, and compresses on transmission. 
 * The --update restricts the copy only to files that are newer than the destination. 
 * Note that rsync is "trailing slash sensitive". A trailing / on a source means "copy the contents of this directory". Without a trailing slash it means "copy the directory".
@@ -281,7 +284,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 
 -- *Slide* --
 ### Part 2: Searches and Wildcards
-* To search for files use the find command (e.g., `find . -name '*.txt'`). Compare with `locate` and `whereis`.
+* To search for files use the find command (e.g., `find . -name "*.txt"`). Compare with `locate` and `whereis`.
 * To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*` or `grep -l`)
 * The most common wildcard is `*`, but there is also `?` (single character). Expansion is 'globbing'.
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
@@ -305,7 +308,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 
 -- *Slide* --
 ### Part 3: A Dynamic Environment
-* Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, its manual path, the library path, and so forth.
+* Environment modules provide for the dynamic modification of the user's environment via module files, such as the location of the application's executables, manual path, libraries, and so forth.
 * Modulefiles also have the advantages of being shared on many users on a system (such as an HPC system) and easily allowing multiple installations of the same application but with different versions and compilation options.
 * Check the current environment with the `env` (environment) command.
 -- *Slide End* --
@@ -316,7 +319,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Module Commands I
+### Part 3: Module Commands
 | Command                         | Explanation                                            |
 |---------------------------------|:------------------------------------------------------:|
 | `module help`                 | List of switches, commands and arguments for modules   |
@@ -325,7 +328,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Module Commands I
+### Part 3: Module Commands
 | Command                         | Explanation                                            |
 |---------------------------------|:------------------------------------------------------:|
 | `module load <modulefile>`    | Loads paths etc to user's environment                  |
@@ -334,10 +337,10 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3: Module Commands III
+### Part 3: Module Commands
 * There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
 * Lmod modules also support regular expressions, e.g., `module -r avail "^Python"`
-* On Spartan there is also the lmod-specific `module spider <modulename>, which traverses through the system for all modules and provides a description.
+* On Spartan there is also the lmod-specific `module spider <modulename>`, which traverses through the system for all modules and provides a description.
 -- *Slide End* --
 
 -- *Slide* --
@@ -361,7 +364,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: Job Submission Principles
 * The steps for job submission are (a) setup and launch., (b) monitor., and (c) retrieve results and analyse. Jobs are launched from the login node with resource requests and, when the job scheduler decides, run on compute nodes. Some directories (e.g.,. user home or project directories) are shared across the entire cluster so output is an accessible place.
-* Job scripts are simply resource requests (understood by scheduler), a batch of commands (understood by shell) with output to files.
+* Job scripts are simply resource requests (understood by scheduler), a batch of commands (understood by shell) with output to files. Include schedular requests first!
 -- *Slide End* --
 
 -- *Slide* --
@@ -420,7 +423,7 @@ my­app data
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3 : Multinode Jobs I
+### Part 3 : Multinode Jobs
 * For distributed-memory multicore job using message passing, the multinode partition has to be 
 invoked and the resource requests altered e.g.,
 `#!/bin/bash`<br />
@@ -432,7 +435,7 @@ invoked and the resource requests altered e.g.,
 -- *Slide End* --
 
 -- *Slide* --
-### Part 3 : Multinode Jobs II
+### Part 3 : Multinode Jobs
 * Multinodes jobs should be run on the `physical` partition which has the higher interconnect speed.
 * Multinode jobs on Spartan may be slower if they have a lot of interprocess communication and they cross compute nodes.
 * This said, multinodes jobs can also request total tasks/cores rather than allocating them per node. e.g., `#SBATCH ­­--ntasks=16`<br />
