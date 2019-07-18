@@ -1,0 +1,9 @@
+bsd-from (1)         - print names of those who have sent mail
+from (1)             - print names of those who have sent mail
+ldapwhoami (1)       - LDAP who am i? tool
+w (1)                - Show who is logged on and what they are doing.
+w.procps (1)         - Show who is logged on and what they are doing.
+who (1)              - show who is logged on
+whoami (1)           - print effective userid
+whois (1)            - client for the whois directory service
+whois.conf (5)       - alternative WHOIS servers list for whois client

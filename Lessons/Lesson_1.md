@@ -143,9 +143,9 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 ### Part 2: Exploring The Environment
 | Command     | Explanation                                                                |
 |:------------|:--------------------------------------------------------------------------:|
-|`whoami`   | "Who Am I?; prints the effective user id                                  |
-|`pwd`      | "Print working directory"|
-|`ls`       | "List" directory listing                                                   |	
+|`whoami`   | "Who Am I?; prints the effective user id                                     |
+|`pwd`      | "Print working directory"							   |
+|`ls`       | "List" directory listing                                                     |	
 -- *Slide End* --
 
 -- *Slide* --
@@ -156,7 +156,7 @@ Mac OS 10.x. For MS-­Windows users, the free PuTTY client is recommended (http:
 | Command     | Explanation                                                                |
 |-------------|:--------------------------------------------------------------------------:|
 |`ls -lart`   | Directory listing with options (long, all, reverse time)                   |
-|`ls -lash`   | Directory listing with options (long, all, size in human readable	   |
+|`ls -lash`   | Directory listing with options (long, all, size in human readable)	   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -165,20 +165,20 @@ Linux commands come with "man" (manual) pages, which provide a terse description
 
 | Command             | Explanation                                                      |
 |:--------------------|:-----------------------------------------------------------------|
-|`man <command>`       | Display the manual entry for the command                         |
+|`man <command>`       | Display the manual entry for the command                        |
 |`info <command>`     | A verbose description of the command                             |
-|`whatis <command>`  | A terse description of the command                               |
+|`whatis <command>`  | A terse description of the command                                |
 -- *Slide End* --
 
 -- *Slide* --
 ### Part 2: Pipes
 Linux also have very useful 'pipes' and redirect commands. To pipe one command through another use the '|' symbol.
 
-| Command            | Explanation                                                         |
-|:-------------------|:-------------------------------------------------------------------:|
-| <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle.        |
-| <code>who &#124; wc -l</code> | "Who" piped through wordcount command, count lines.        |
-| <code>ps -afux &#124; less</code> | "ps" provides a list of current processes. Check `man ps`           |
+| Command            | Explanation                                                                |
+|:-------------------|:--------------------------------------------------------------------------:|
+| <code>who -u  &#124; less</code> | "Who" shows who is logged on and how long they've been idle. |
+| <code>who &#124; wc -l</code> | "Who" piped through wordcount command, count lines.             |
+| <code>ps -afux &#124; less</code> | "ps" provides a list of current processes. Check `man ps`   |
 -- *Slide End* --
 
 -- *Slide* --
@@ -273,6 +273,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 * Directories can be created with the `mkdir` command (e.g., `mkdir braf`).
 * Files can be copied with the `cp` command (e.g., `cp gattaca.txt gattaca2.txt`)
 * Files can be moved with the `mv` command (e.g., `mv gattaca2.txt braf`)
+-- *Slide End* --
 
 -- *Slide* --
 ### Part 2: File Differences
@@ -285,7 +286,7 @@ For example; `rsync -avz --update lev@spartan.hpc.unimelb.edu.au:files/workfiles
 -- *Slide* --
 ### Part 2: Searches and Wildcards
 * To search for files use the find command (e.g., `find . -name "*.txt"`). Compare with `locate` and `whereis`.
-* To search within files, use the `grep` command (e.g., `grep -i ATEK braf/*` or `grep -l`)
+* To search within files, use the `grep` command (e.g., `grep -i 'ATEK' braf/*` or `grep -l`)
 * The most common wildcard is `*`, but there is also `?` (single character). Expansion is 'globbing'.
 * There are also range searches (e.g., `[a-z]` any character between a and z, inclusive)
 -- *Slide End* --
@@ -385,9 +386,7 @@ From the IBM 'Red Book' on Job Submission.
 
 -- *Slide* --
 ### Part 2: Partitions and Queues
-* Setup and launch consists of writing a short script that initially makes resource requests 
-(walltime, processors, memory, queues) and then commands (loading modules, changing 
-directories, running executables against datasets etc), and optionally checking queueing system.
+* Setup and launch consists of writing a short script that initially makes resource requests  (walltime, processors, memory, queues) and then commands (loading modules, changing  directories, running executables against datasets etc), and optionally checking queueing system.
 * Core command for checking paritions is `sinfo -s`, or `sinfo -p $partition` for partition and node status. Major partitions are: `cloud`, `physical`, `gpgpu`. Note also `longcloud`, and `shortgpgpu`.
 * Core command for checking queue `squeue` or `showq` (on Spartan).
 -- *Slide End* --
@@ -408,9 +407,7 @@ directories, running executables against datasets etc), and optionally checking 
 #SBATCH ­­--time=01:00:00
 #SBATCH ­­--ntasks=1
 module load my­app­compiler/version
-my­app data
-```
-
+my­app data ```
 * Examples at `/usr/local/common/MATLAB` and `/usr/local/common/R`, `/usr/local/OpenFOAM`; note that the job can call other scripts. Note that Slurm has full and abbreviated directives.
 -- *Slide End* --
 
@@ -420,6 +417,7 @@ my­app data
 * With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of the cores in the node.<br />
 `#SBATCH ­­--cpus-­per-­task=8`
 * See examples at `/usr/local/common/FSL/`
+* See example at `/usr/local/common/IntroLinux/constraint.slurm`
 -- *Slide End* --
 
 -- *Slide* --
@@ -459,7 +457,7 @@ dataset10.csv
 
 -- *Slide* --
 ### Part 4 : Job/Batch Dependencies
-* A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `before`, `beforeok`, `beforenotok`. A typical use case is where the output of one job is required as the input of the next job. Multiple job dependencies are specified with colon separated values.
+* A dependency condition is established on which the launching of a batch script depends, creating a conditional pipeline. The dependency directives consist of `after`, `afterok`, `afternotok`, `afterany`, `singleton` and more. A typical use case is where the output of one job is required as the input of the next job. Multiple job dependencies are specified with colon separated values.
 `#SBATCH ­­dependency=afterok:myfirstjobid mysecondjob`
 * Examples at `/usr/local/common/depend/`
 -- *Slide End* --
@@ -488,8 +486,7 @@ dataset10.csv
 srun -N 2 -n 12 -t 06:00:00 ./my­mpi­app
 export OMP_NUM_THREADS=6
 srun -N 1 -n2 -c $OMP_NUM_THREADS -t 12:00:00 ./myompapp
-srun -N 1 -n 1 -t 06:00:00 ./myserialapp
-```
+srun -N 1 -n 1 -t 06:00:00 ./myserialapp```
 -- *Slide End* --
 
 -- *Slide* --
@@ -508,7 +505,7 @@ srun -N 1 -n 1 -t 06:00:00 ./myserialapp
 -- *Slide* --
 ### Part 4: Staging
 * Local disk is typically faster than shared disks. If you find that your read-writes are slow and you are making use of a lot of I/O you may need to stage your data.
-* Spartan has `/data` for /home and /projects (large, slower), `/scratch` for temporary storage data (faster), and as local disk, `/var/local/tmp` (fastest, not shared). You may need to copy data between these locations. 
+* Spartan has `/data` for `/home` and `/projects` (large, slower), `/scratch` for temporary storage data (faster), and as local disk, `/var/local/tmp` (fastest, not shared). 
 -- *Slide End* --
 
 -- *Slide* --
