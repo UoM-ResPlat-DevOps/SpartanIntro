@@ -568,5 +568,11 @@ srun -N 1 -n 1 -t 06:00:00 ./myserialapp```
 -- *Slide End* --
 
 -- *Slide* --
+### Part 5: Test Yourself
+* There is an exam for this course!
+`https://github.com/australia-new-zealand-hpc-educators/IntroExam`
+-- *Slide End* --
+
+-- *Slide* --
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/hypnotoad.png" width="150%" height="150%" />
 -- *Slide End* --
