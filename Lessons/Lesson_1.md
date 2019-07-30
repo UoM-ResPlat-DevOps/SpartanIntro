@@ -22,6 +22,13 @@
 -- *Slide End* --
 
 -- *Slide* --
+### Part I: Using HPC
+* People need to use HPC when their datasets are "too large" or processing is "too complex" for their PC.
+* HPC is the *best* tool to processing large and complex datasets 
+* However due to latency and bandwdith issues, it is not always the best for visualisation.
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 1: Supercomputers and HPC
 * "Supercomputer" means any single computer system that has exceptional processing power for its time. 
 * One popular metric (LINPACK) is the number of floating­ point operations per second (FLOPS) such a system can carry out (http://top500.org). HPC Challenge and HPCG are broader, more interesting metrics. 
