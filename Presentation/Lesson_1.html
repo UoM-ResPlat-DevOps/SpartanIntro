@@ -215,7 +215,7 @@ To redirect output use the '>' symbol. To redirect input (for example, to feed d
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 2: Files and Text Editing
-* Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is *much* better to use underscores or CamelCase instead of spaces, newlines etc (including in job names).
+* Linux filenames can be constructed of any characters except the forward slash, which is for directory navigation. However it is best to avoid punctuation marks, non-printing characters (e.g., spaces). It is *much* better to use snake_case or CamelCase instead of spaces, newlines etc (including in job names).
 * Linux is case-sensitive with its filenames (e.g., list.txt, LIST.txt lisT.txT are different).
 </script></section>
 <section data-markdown><script type="text/template">
@@ -346,6 +346,11 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 * There is also the `module switch <modulefile1> <modulefile2>`, which unloads one modulefile (modulefile1) and loads another (modulefile2).
 * Lmod modules also support regular expressions, e.g., `module -r avail "^Python"`
 * On Spartan there is also the lmod-specific `module spider <modulename>`, which traverses through the system for all modules and provides a description.
+</script></section>
+<section data-markdown><script type="text/template">
+### Part 3: New Modules System
+* At the end of 2019 the Spartan team started to implement a new modules system, based around compiler hiearchies. With the new system, you must invoke a compiler (if different to the default), then the application. This protects people from changing toolchains. The full toolchain does not have to be specified.
+* Example: `source /usr/local/module/spartan_new.sh`, `module load fosscuda/2019b`, `module avail Tensorflow/`, `module load tensorflow/2.1.0-python-3.7.4`
 </script></section>
 <section data-markdown><script type="text/template">
 ### Part 3: Portable Batch System I

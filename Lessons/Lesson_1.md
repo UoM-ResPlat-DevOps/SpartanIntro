@@ -352,6 +352,12 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide End* --
 
 -- *Slide* --
+### Part 3: New Modules System
+* At the end of 2019 the Spartan team started to implement a new modules system, based around compiler hiearchies. With the new system, you must invoke a compiler (if different to the default), then the application. This protects people from changing toolchains. The full toolchain does not have to be specified.
+* Example: `source /usr/local/module/spartan_new.sh`, `module load fosscuda/2019b`, `module avail Tensorflow/`, `module load tensorflow/2.1.0-python-3.7.4`
+-- *Slide End* --
+
+-- *Slide* --
 ### Part 3: Portable Batch System I
 * The Portable Batch System (or simply PBS) performs job scheduling by assigning unattended background tasks expressed as batch jobs, among the available resources.
 * Originally developed by MRJ Technology Solutions under contract to NASA in the early 1990s. Released as an open-source product as OpenPBS. Forked by Adaptive Computing as TORQUE (Terascale Open-source Resource and QUEue Manager). Many of the original engineering team now part of Altair Engineering who have their own commercial version, PBSPro.
