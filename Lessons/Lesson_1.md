@@ -73,20 +73,24 @@ Image originally from the VPAC
 
 -- *Slide* --
 ### Part 1: What's Different About Spartan?
-* Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes.
-* Matches Sparta's citenzship structure. Spartan is not "HPC in the Cloud", it's a chimera HPC/Cloud hybrid.
-* Other institutions (e.g., University of Freiburg) do "Cloud on HPC". 
+* Recommended solution was to make use of existing NeCTAR Research cloud with an expansion of general cloud compute provisioning and use of a smaller "true HPC" system on bare metal nodes. Spartan was not "HPC in the Cloud", a chimera HPC/Cloud hybrid. Other institutions (e.g., University of Freiburg) do "Cloud on HPC". 
+* Now Spartan has returned to a more traditional layout.
 -- *Slide End* --
 
 -- *Slide* --
-### Part 1: Spartan Design
+### Part 1: Original Design
 <img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/spartanlayout.png" />
 -- *Slide End* --
 
 -- *Slide* --
+### Part 1: Archiecture
+<img src="https://raw.githubusercontent.com/UoM-ResPlat-DevOps/SpartanIntro/master/Images/spartan_architecture.png" />
+-- *Slide End* --
+
+
+-- *Slide* --
 ### Part 1: Spartan Hardware
 * Physical partition 37 nodes, 1,284 cores,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 254GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
-* Cloud partition is 165 virtual machines with over 1,980 cores, dual CPU Intel(R) Xeon(R) Gold 6138 CPU, 2.00GHz, 10GBe Cisco Nexus. 
 * GPU partition for LIEF grant recipients, 1,752 core, 4 P100 Nvidia GPUs per node (3584 CUDA Cores)
 * Storage: 4.3PB `/scratch` NFS over RDMA, `/project` and `/home`.
 -- *Slide End* --
@@ -94,12 +98,7 @@ Image originally from the VPAC
 -- *Slide* --
 ### Part I: Accounts and Projects
 * Spartan uses its an authentication that is tied to the university Security Assertion Markup Language (SAML). The login URL is `https://dashboard.hpc.unimelb.edu.au/karaage`
-* Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher (the "Principal Investigator") and are subject to approval by the Head of Research Compute Services. Participants in a project can be researchers or research support staff from anywhere.
--- *Slide End* --
-
--- *Slide* --
-### Part I: Accounts and Projects
-* Select Department from this list: `https://gitlab.unimelb.edu.au/resplat-cloud/uom-cloud-dashboard/blob/uom/queens/nectar_dashboard/rcallocation/choices_dept.py`
+* Users on Spartan must belong to a project. Projects must be led by a University of Melbourne researcher Participants in a project can be researchers or research support staff from anywhere.
 * Projects have their own project directory for files (500GB default, can be increased to 1TB or 10TB with approval).
 -- *Slide End* --
 
@@ -384,7 +383,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: Fair Share
 * A cluster is a shared environment thus a a resource requesting system. Policies ensure that everyone has a "fair share" to the resources (e.g., user processor limits).
-* Spartan's general partition (cloud, physical) treat all jobs equally. The GPGPU has allocation based on purchasing.
+* Spartan's general partitions treat all jobs equally. The GPGPU has allocation based on purchasing.
 -- *Slide End* --
 
 -- *Slide* --
@@ -400,7 +399,7 @@ From the IBM 'Red Book' on Job Submission.
 -- *Slide* --
 ### Part 2: Partitions and Queues
 * Setup and launch consists of writing a short script that initially makes resource requests  (walltime, processors, memory, queues) and then commands (loading modules, changing  directories, running executables against datasets etc), and optionally checking queueing system.
-* Core command for checking paritions is `sinfo -s`, or `sinfo -p $partition` for partition and node status. Major partitions are: `cloud`, `physical`, `gpgpu`. Note also `longcloud`, and `shortgpgpu`.
+* Core command for checking paritions is `sinfo -s`, or `sinfo -p $partition` for partition and node status. Major partitions are: `physical`, `snowy`, `gpgpu`.
 * Core command for checking queue `squeue` or `showq` (on Spartan).
 -- *Slide End* --
 
@@ -416,7 +415,6 @@ From the IBM 'Red Book' on Job Submission.
 ### Part 3: Single Core Job
 ```bash
 #!/bin/bash
-#SBATCH -­p cloud
 #SBATCH ­­--time=01:00:00
 #SBATCH ­­--ntasks=1
 module load my­app­compiler/version
@@ -426,11 +424,10 @@ my­app data ```
 
 -- *Slide* --
 ### Part 3 : Multicore and Multithreaded Jobs
-* In Slurm, `ntasks` means number of tasks, whereas `cpus-per-task` allocates processor cores. In most jobs (serial, MPI) this is 1 by default.
+* In Slurm, `ntasks` means number of tasks, whereas `cpus-per-task` allocates processor cores. 
 * With shared-memory multithreaded jobs on (e.g., OpenMP), modify the `--cpus-per-task` to a maximum of the cores in the node.<br />
 `#SBATCH ­­--cpus-­per-­task=8`
-* See examples at `/usr/local/common/FSL/`
-* See example at `/usr/local/common/IntroLinux/constraint.slurm`
+* See examples at `/usr/local/common/ADMIXTURE` and `/usr/local/common/IntroLinux/constraint.slurm`
 -- *Slide End* --
 
 -- *Slide* --
@@ -572,12 +569,12 @@ srun -N 1 -n 1 -t 06:00:00 ./myserialapp```
 ### Part 5: Performance Test
 * Compare the performance of NAMD/VMD Ubiquitin protein test case under `/usr/local/common/NAMD` under different configurations
 
-| Nodes and Tasks       | Partition             | Time                    | 
-|-----------------------|-----------------------|------------------------:|
-|ntasks=4               | cloud                 |                         |
-|ntaks=8                | cloud                 |                         |
-|nodes=2, ntasks=16     | cloud                 |                         |
-|nodes=2, ntasks=16     | physical              |                         |
+| Nodes and Tasks       | Time             	| 
+|-----------------------|----------------------:|
+|ntasks=1               | 			|
+|ntasks=8               |                       |
+|nodes=2, per-node=4    | 			|
+|nodes=2, ntasks=16     | 	                |
 -- *Slide End* --
 
 -- *Slide* --
