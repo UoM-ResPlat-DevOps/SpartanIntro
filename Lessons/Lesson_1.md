@@ -90,9 +90,10 @@ Image originally from the VPAC
 
 -- *Slide* --
 ### Part 1: Spartan Hardware
-* Physical partition 37 nodes, 1,284 cores,  2 socket Intel E5-2643 v3 CPU with 6-core per socket, 3.4GHz, 254GB memory, 2x 1.2TB SAS drives, 2x 40GbE network Mellanox 2100. 
+* Physical partition 56 nodes, 3,912 cores. Snowy partition 31 nodes, 992 cores.  
 * GPU partition for LIEF grant recipients, 1,752 core, 4 P100 Nvidia GPUs per node (3584 CUDA Cores)
 * Storage: 4.3PB `/scratch` NFS over RDMA, `/project` and `/home`.
+* See `https://dashboard.hpc.unimelb.edu.au/status_specs/`
 -- *Slide End* --
 
 -- *Slide* --
@@ -353,7 +354,7 @@ BRAF is a human gene that makes a protein (imaginatively) named B-Raf. This prot
 -- *Slide* --
 ### Part 3: New Modules System
 * At the end of 2019 the Spartan team started to implement a new modules system, based around compiler hiearchies. With the new system, you must invoke a compiler (if different to the default), then the application. This protects people from changing toolchains. The full toolchain does not have to be specified.
-* Example: `source /usr/local/module/spartan_new.sh`, `module load fosscuda/2019b`, `module avail Tensorflow/`, `module load tensorflow/2.1.0-python-3.7.4`. Another option to load new system is `module load spartan_2019`.
+* Example: `source /usr/local/module/spartan_new.sh`, `module load fosscuda/2019b`, `module load tensorflow/2.1.0-python-3.7.4`. 
 -- *Slide End* --
 
 -- *Slide* --
